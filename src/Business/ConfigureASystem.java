@@ -1,7 +1,10 @@
 package Business;
 
 import Business.Employee.Employee;
-import Business.Role.SystemAdminRole;
+import Business.Role.ApplicationRegistrar;
+import Business.Role.NoticeWorker;
+import Business.Role.EligibilityWorker;
+
 import Business.UserAccount.UserAccount;
 
 /**
@@ -23,8 +26,10 @@ public class ConfigureASystem {
         
         Employee employee = system.getEmployeeDirectory().createEmployee("sysadmin");
         
-        UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
-        
+        UserAccount ua1 = system.getUserAccountDirectory().createUserAccount("aradmin", "aradmin", employee, new ApplicationRegistrar());
+        UserAccount ua2 = system.getUserAccountDirectory().createUserAccount("nwadmin", "nwadmin", employee, new NoticeWorker());
+        UserAccount ua3 = system.getUserAccountDirectory().createUserAccount("ewadmin", "ewadmin", employee, new EligibilityWorker());
+
         return system;
     }
     

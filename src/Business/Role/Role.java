@@ -17,9 +17,9 @@ import javax.swing.JPanel;
 public abstract class Role {
     
     public enum RoleType{
-        ApplicationRegistrar("Application Registrar"),
-        EligibilityWorker("Eligibility Worker"),
-        NoticeWorker("Notice Worker"),
+        ApplicationRegistrar("ApplicationRegistrar"),
+        EligibilityWorker("EligibilityWorker"),
+        NoticeWorker("NoticeWorker"),
         Customer("Customer");
         
         private String value;
