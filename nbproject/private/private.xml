@@ -3,7 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/Business/Role/Role.java</file>
+=======
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/Role/DoctorRole.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/Organization/AdminOrganization.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/Role/Role.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/Role/AdminRole.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/DB4OUtil/DB4OUtil.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/Enterprise/HospitalEnterprise.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/Network/Network.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/EcoSystem.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/Organization/DoctorOrganization.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/Enterprise/EnterpriseDirectory.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/Employee/Employee.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/Enterprise/Enterprise.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/Employee/EmployeeDirectory.java</file>
+            <file>file:/Users/unnatikolhe/NetBeansProjects/Final_Project/src/Business/ConfigureASystem.java</file>
+>>>>>>> 74c5dd14d7db21c9f7f7ce47957b1f973c13986f
         </group>
     </open-files>
 </project-private>
