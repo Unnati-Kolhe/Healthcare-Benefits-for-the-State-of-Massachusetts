@@ -195,11 +195,11 @@ public class NewJFrame extends javax.swing.JFrame {
     if(rs.next()){
     JOptionPane.showMessageDialog(this, "username and password matched and you are logged in as "+rs.getString("type"));
     if(dropdown.getSelectedIndex()==0){
-    ARAdmin ar = new ARAdmin();
+    ARPersonDetails ar = new ARPersonDetails();
     ar.setVisible(true);
     this.setVisible(false);
     } else if(dropdown.getSelectedIndex()==1){
-    EDAdmin ed = new EDAdmin();
+    ARFileClearance ed = new ARFileClearance();
     ed.setVisible(true);
     this.setVisible(false);
     } else if(dropdown.getSelectedIndex()==2){
