@@ -30,11 +30,11 @@ public class SearchClient extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        lblFName2 = new javax.swing.JLabel();
-        lblClient1 = new javax.swing.JLabel();
+        lblSSN = new javax.swing.JLabel();
+        lblClient = new javax.swing.JLabel();
         btnContinue = new javax.swing.JButton();
-        lblSSN = new javax.swing.JTextField();
-        lblClientID = new javax.swing.JTextField();
+        txtSSN = new javax.swing.JTextField();
+        txtClientID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,11 +47,11 @@ public class SearchClient extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(197, 221, 243));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        lblFName2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblFName2.setText("Enter SSN:");
+        lblSSN.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblSSN.setText("Enter SSN:");
 
-        lblClient1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblClient1.setText("Client ID:");
+        lblClient.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClient.setText("Client ID:");
 
         btnContinue.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         btnContinue.setText("Continue");
@@ -61,15 +61,15 @@ public class SearchClient extends javax.swing.JFrame {
             }
         });
 
-        lblSSN.addActionListener(new java.awt.event.ActionListener() {
+        txtSSN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblSSNActionPerformed(evt);
+                txtSSNActionPerformed(evt);
             }
         });
 
-        lblClientID.addActionListener(new java.awt.event.ActionListener() {
+        txtClientID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblClientIDActionPerformed(evt);
+                txtClientIDActionPerformed(evt);
             }
         });
 
@@ -80,12 +80,12 @@ public class SearchClient extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(127, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFName2)
-                    .addComponent(lblClient1))
+                    .addComponent(lblSSN)
+                    .addComponent(lblClient))
                 .addGap(111, 111, 111)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(155, 155, 155))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(289, 289, 289)
@@ -93,21 +93,21 @@ public class SearchClient extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblClientID, lblSSN});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtClientID, txtSSN});
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblClient1, lblFName2});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblClient, lblSSN});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClient1)
-                    .addComponent(lblClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblClient)
+                    .addComponent(txtClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFName2)
-                    .addComponent(lblSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSSN)
+                    .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(78, 78, 78)
                 .addComponent(btnContinue)
                 .addGap(22, 22, 22))
@@ -153,13 +153,13 @@ public class SearchClient extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnContinueActionPerformed
 
-    private void lblSSNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSSNActionPerformed
+    private void txtSSNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSSNActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblSSNActionPerformed
+    }//GEN-LAST:event_txtSSNActionPerformed
 
-    private void lblClientIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblClientIDActionPerformed
+    private void txtClientIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClientIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblClientIDActionPerformed
+    }//GEN-LAST:event_txtClientIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,9 +201,9 @@ public class SearchClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblClient1;
-    private javax.swing.JTextField lblClientID;
-    private javax.swing.JLabel lblFName2;
-    private javax.swing.JTextField lblSSN;
+    private javax.swing.JLabel lblClient;
+    private javax.swing.JLabel lblSSN;
+    private javax.swing.JTextField txtClientID;
+    private javax.swing.JTextField txtSSN;
     // End of variables declaration//GEN-END:variables
 }

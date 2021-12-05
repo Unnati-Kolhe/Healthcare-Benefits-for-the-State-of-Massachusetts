@@ -94,13 +94,13 @@
                   <Group type="102" attributes="0">
                       <EmptySpace pref="127" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblFName2" linkSize="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblClient1" linkSize="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSSN" linkSize="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblClient" linkSize="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblSSN" linkSize="1" min="-2" pref="209" max="-2" attributes="0"/>
-                          <Component id="lblClientID" linkSize="1" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="txtSSN" linkSize="1" min="-2" pref="209" max="-2" attributes="0"/>
+                          <Component id="txtClientID" linkSize="1" min="-2" pref="201" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
                   </Group>
@@ -116,13 +116,13 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblClient1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblClientID" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="lblClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtClientID" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="36" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblFName2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblSSN" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="lblSSN" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSSN" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                       <Component id="btnContinue" min="-2" max="-2" attributes="0"/>
@@ -132,7 +132,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblFName2">
+            <Component class="javax.swing.JLabel" name="lblSSN">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="20" style="0"/>
@@ -140,7 +140,7 @@
                 <Property name="text" type="java.lang.String" value="Enter SSN:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblClient1">
+            <Component class="javax.swing.JLabel" name="lblClient">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="20" style="0"/>
@@ -159,14 +159,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnContinueActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="lblSSN">
+            <Component class="javax.swing.JTextField" name="txtSSN">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblSSNActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSSNActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="lblClientID">
+            <Component class="javax.swing.JTextField" name="txtClientID">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblClientIDActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtClientIDActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
