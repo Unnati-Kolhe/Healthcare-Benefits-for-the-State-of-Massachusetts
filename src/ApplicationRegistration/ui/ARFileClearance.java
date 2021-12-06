@@ -4,6 +4,13 @@
  * and open the template in the editor.
  */
 package ApplicationRegistration.ui;
+package ApplicationRegistration.ui.ARPersonDetails.java;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,11 +18,20 @@ package ApplicationRegistration.ui;
  */
 public class ARFileClearance extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EDAdmin
-     */
+    Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
     public ARFileClearance() {
         initComponents();
+         try{
+    String query = "SELECT fname FROM `person` LIMIT 1 DESC";
+    con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+    rs = pst.executeQuery(query);
+    String curr_client = rs.getString("fname");
+    lblClient1.setText(curr_client);
+    } catch(Exception ex) {
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
     }
 
     /**

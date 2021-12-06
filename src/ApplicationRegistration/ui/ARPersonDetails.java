@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -77,6 +79,7 @@ public class ARPersonDetails extends javax.swing.JFrame {
         lblFName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblFName.setText("First Name:");
 
+        txtFName.setText("ranu");
         txtFName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFNameActionPerformed(evt);
@@ -86,11 +89,20 @@ public class ARPersonDetails extends javax.swing.JFrame {
         lblMName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblMName.setText("Middle Name:");
 
+        txtMName.setText("mondal");
+
         lblLName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblLName.setText("Last Name:");
 
         lblDob.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblDob.setText("Date of Birth:");
+
+        txtLName.setText("mondal");
+        txtLName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLNameActionPerformed(evt);
+            }
+        });
 
         lblMarital.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblMarital.setText("Marital Status:");
@@ -104,6 +116,8 @@ public class ARPersonDetails extends javax.swing.JFrame {
         lblGender.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblGender.setText("Gender:");
 
+        txtMarital.setText("unmarried");
+
         comboRace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hispanic/Latino", "American Indian", "African American", "Native Hawaiian", "White" }));
 
         comboEth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hispanic", "Native Americans", "Asian", "Latin", " " }));
@@ -112,6 +126,13 @@ public class ARPersonDetails extends javax.swing.JFrame {
 
         lblPhone.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblPhone.setText("Phone Number:");
+
+        txtPhone.setText("123-456-7890");
+        txtPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneActionPerformed(evt);
+            }
+        });
 
         btnSave.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         btnSave.setText("Save");
@@ -123,9 +144,21 @@ public class ARPersonDetails extends javax.swing.JFrame {
 
         btnNext.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         btnNext.setText("Next");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
         lblSSN.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblSSN.setText("SSN:");
+
+        txtSSN.setText("678-56-7890");
+        txtSSN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSSNActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -295,6 +328,24 @@ public class ARPersonDetails extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
     try{
+        
+    String pattern = "[A-Za-z]+";
+    String pattern2 = "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$";
+    String pattern3 = "^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$";
+
+    Pattern pat1 = Pattern.compile(pattern);
+    Pattern pat2 = Pattern.compile(pattern2);
+    Pattern pat3 = Pattern.compile(pattern3);
+    Matcher match = pat1.matcher(txtFName.getText());
+    Matcher match2 = pat1.matcher(txtMName.getText());
+    Matcher match3 = pat1.matcher(txtLName.getText());
+    Matcher match4 = pat2.matcher(txtPhone.getText());
+    Matcher match5 = pat3.matcher(txtSSN.getText());
+    
+    if(!match.matches() || !match2.matches() || !match3.matches() || !match4.matches() || !match5.matches()){
+        JOptionPane.showMessageDialog(null, "Please enter valid details");
+    }else{
+        
     SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd"); 
     
     String query = "INSERT into person " + " (fname,mname,lname,dob,marital_status,race,ethnicity,gender,phone,ssn)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -310,7 +361,7 @@ public class ARPersonDetails extends javax.swing.JFrame {
     pst.setString(8,String.valueOf(comboGender.getSelectedItem()));
     pst.setString(9,txtPhone.getText());
     pst.setString(10,txtSSN.getText());
-    pst.executeUpdate();
+    pst.executeUpdate(); }
     } catch(Exception ex) {
     JOptionPane.showMessageDialog(this, ex.getMessage());
     }
@@ -320,6 +371,23 @@ public class ARPersonDetails extends javax.swing.JFrame {
     private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFNameActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        ARFileClearance fc = new ARFileClearance();
+        fc.setVisible(true);
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void txtLNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLNameActionPerformed
+
+    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneActionPerformed
+
+    private void txtSSNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSSNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSSNActionPerformed
 
     /**
      * @param args the command line arguments

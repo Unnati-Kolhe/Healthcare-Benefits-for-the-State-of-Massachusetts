@@ -68,6 +68,15 @@ public class NewJFrame extends javax.swing.JFrame {
 
         lbltype.setText("User Type");
 
+        txtuser.setText("aradmin");
+
+        txtpass.setText("aradmin");
+        txtpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpassActionPerformed(evt);
+            }
+        });
+
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,7 +202,7 @@ public class NewJFrame extends javax.swing.JFrame {
     pst.setString(3, String.valueOf(dropdown.getSelectedItem()));
     rs = pst.executeQuery();
     if(rs.next()){
-    JOptionPane.showMessageDialog(this, "username and password matched and you are logged in as "+rs.getString("type"));
+    JOptionPane.showMessageDialog(this, "You have successfully logged in as "+rs.getString("type"));
     if(dropdown.getSelectedIndex()==0){
     ARPersonDetails ar = new ARPersonDetails();
     ar.setVisible(true);
@@ -212,12 +221,16 @@ public class NewJFrame extends javax.swing.JFrame {
     this.setVisible(false);
     }
     } else {
-    JOptionPane.showMessageDialog(this, "username and password do not match");
+    JOptionPane.showMessageDialog(this, "Username and Password do not match");
     }
     } catch(Exception ex) {
     JOptionPane.showMessageDialog(this, ex.getMessage());
     }
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpassActionPerformed
 
     /**
      * @param args the command line arguments

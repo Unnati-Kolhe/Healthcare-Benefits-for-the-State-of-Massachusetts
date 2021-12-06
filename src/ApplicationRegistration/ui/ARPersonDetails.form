@@ -267,6 +267,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtFName">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ranu"/>
+                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFNameActionPerformed"/>
                   </Events>
@@ -280,6 +283,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtMName">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="mondal"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblLName">
                   <Properties>
@@ -298,6 +304,12 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtLName">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="mondal"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLNameActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMarital">
                   <Properties>
@@ -332,6 +344,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtMarital">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="unmarried"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="comboRace">
                   <Properties>
@@ -388,6 +403,12 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtPhone">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="123-456-7890"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhoneActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSave">
                   <Properties>
@@ -407,6 +428,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Next"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblSSN">
                   <Properties>
@@ -417,6 +441,12 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtSSN">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="678-56-7890"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSSNActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
                 </Component>
