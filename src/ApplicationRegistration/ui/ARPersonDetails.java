@@ -5,15 +5,24 @@
  */
 package ApplicationRegistration.ui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shubhangisrivastava
  */
 public class ARPersonDetails extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ARAdmin
-     */
+    Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
     public ARPersonDetails() {
         initComponents();
     }
@@ -52,7 +61,7 @@ public class ARPersonDetails extends javax.swing.JFrame {
         btnNext = new javax.swing.JButton();
         lblSSN = new javax.swing.JLabel();
         txtSSN = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,10 +160,8 @@ public class ARPersonDetails extends javax.swing.JFrame {
                                         .addComponent(lblLName))
                                     .addGap(185, 185, 185)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addGap(6, 6, 6)
-                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtLName, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblMName)
@@ -168,7 +175,7 @@ public class ARPersonDetails extends javax.swing.JFrame {
                                     .addComponent(lblPhone)
                                     .addComponent(lblSSN))
                                 .addGap(163, 163, 163)
-                                .addComponent(txtSSN))))
+                                .addComponent(txtSSN, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(251, 251, 251)
                         .addComponent(btnSave)
@@ -194,16 +201,16 @@ public class ARPersonDetails extends javax.swing.JFrame {
                             .addComponent(lblMName)
                             .addComponent(txtMName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(lblLName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblDob)))
-                        .addGap(14, 14, 14)
+                                .addComponent(lblDob))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMarital)
                             .addComponent(txtMarital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -287,7 +294,27 @@ public class ARPersonDetails extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+    try{
+    SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd"); 
+    
+    String query = "INSERT into person " + " (fname,mname,lname,dob,marital_status,race,ethnicity,gender,phone,ssn)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+    pst = con.prepareStatement(query);
+    pst.setString(1, txtFName.getText());
+    pst.setString(2, txtMName.getText());
+    pst.setString(3, txtLName.getText());
+    pst.setString(4,Date_Format.format(jDateChooser2.getDate()));
+    pst.setString(5,txtMarital.getText());
+    pst.setString(6,String.valueOf(comboRace.getSelectedItem()));
+    pst.setString(7,String.valueOf(comboEth.getSelectedItem()));
+    pst.setString(8,String.valueOf(comboGender.getSelectedItem()));
+    pst.setString(9,txtPhone.getText());
+    pst.setString(10,txtSSN.getText());
+    pst.executeUpdate();
+    } catch(Exception ex) {
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
+    
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
@@ -336,7 +363,7 @@ public class ARPersonDetails extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboEth;
     private javax.swing.JComboBox<String> comboGender;
     private javax.swing.JComboBox<String> comboRace;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
