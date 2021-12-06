@@ -9,12 +9,12 @@ package DataCollection.ui;
  *
  * @author shubhangisrivastava
  */
-public class DCHouseholdInformation extends javax.swing.JFrame {
+public class IncomeQuestions extends javax.swing.JFrame {
 
     /**
-     * Creates new form DCHouseholdInformation
+     * Creates new form IncomeQuestions
      */
-    public DCHouseholdInformation() {
+    public IncomeQuestions() {
         initComponents();
     }
 
@@ -31,14 +31,12 @@ public class DCHouseholdInformation extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        lblDisabilityQues1 = new javax.swing.JLabel();
-        comboDisability = new javax.swing.JComboBox<>();
-        lblStayQuestion1 = new javax.swing.JLabel();
-        comboPregnant = new javax.swing.JComboBox<>();
-        lblStayQuestion2 = new javax.swing.JLabel();
-        comboCWD = new javax.swing.JComboBox<>();
-        lblStayQuestion3 = new javax.swing.JLabel();
-        comboAB = new javax.swing.JComboBox<>();
+        lblEarnedIncQues = new javax.swing.JLabel();
+        xomboEarnedIncQues = new javax.swing.JComboBox<>();
+        lblUnearnedIncQues = new javax.swing.JLabel();
+        comboUnearnedIncQues = new javax.swing.JComboBox<>();
+        lblNoIncomeQues = new javax.swing.JLabel();
+        comboNoIncQues = new javax.swing.JComboBox<>();
         btnSave = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
 
@@ -50,34 +48,28 @@ public class DCHouseholdInformation extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Data Collection - Household Information");
+        jLabel1.setText("Data Collection - Income Questions");
 
         jPanel3.setBackground(new java.awt.Color(197, 221, 243));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        lblDisabilityQues1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblDisabilityQues1.setText("Does the PI hold a disability of any kind?");
-        lblDisabilityQues1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lblEarnedIncQues.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblEarnedIncQues.setText("Does the individual have an Earned Income?:");
+        lblEarnedIncQues.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        comboDisability.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
+        xomboEarnedIncQues.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
-        lblStayQuestion1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblStayQuestion1.setText("Is there any pregnant woman in the house?");
-        lblStayQuestion1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lblUnearnedIncQues.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblUnearnedIncQues.setText("Does the individual have an unearned Income?:");
+        lblUnearnedIncQues.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        comboPregnant.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
+        comboUnearnedIncQues.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
-        lblStayQuestion2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblStayQuestion2.setText("Is the person receiving CWD and WWD?");
-        lblStayQuestion2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lblNoIncomeQues.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblNoIncomeQues.setText("Does the individual have no Income?:");
+        lblNoIncomeQues.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        comboCWD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
-
-        lblStayQuestion3.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblStayQuestion3.setText("Is Medicare Part A or B selected?");
-        lblStayQuestion3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-
-        comboAB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
+        comboNoIncQues.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
         btnSave.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         btnSave.setText("Save");
@@ -95,30 +87,27 @@ public class DCHouseholdInformation extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblDisabilityQues1)
+                        .addComponent(lblEarnedIncQues)
                         .addGap(29, 29, 29)
-                        .addComponent(comboDisability, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(xomboEarnedIncQues, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblStayQuestion2)
-                            .addComponent(lblStayQuestion3))
-                        .addGap(47, 47, 47)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboAB, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboCWD, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblNoIncomeQues)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboNoIncQues, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(btnSave)
-                                .addGap(66, 66, 66)
-                                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblStayQuestion1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboPregnant, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18))
+                        .addComponent(lblUnearnedIncQues)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboUnearnedIncQues, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addComponent(btnSave)
+                .addGap(77, 77, 77)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnNext, btnSave});
@@ -128,25 +117,21 @@ public class DCHouseholdInformation extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDisabilityQues1)
-                    .addComponent(comboDisability, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEarnedIncQues)
+                    .addComponent(xomboEarnedIncQues, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStayQuestion1)
-                    .addComponent(comboPregnant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUnearnedIncQues)
+                    .addComponent(comboUnearnedIncQues, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStayQuestion2)
-                    .addComponent(comboCWD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblStayQuestion3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(comboAB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                    .addComponent(lblNoIncomeQues)
+                    .addComponent(comboNoIncQues, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnNext))
-                .addContainerGap())
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -164,8 +149,8 @@ public class DCHouseholdInformation extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(79, 79, 79))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -219,20 +204,20 @@ public class DCHouseholdInformation extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DCHouseholdInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IncomeQuestions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DCHouseholdInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IncomeQuestions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DCHouseholdInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IncomeQuestions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DCHouseholdInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IncomeQuestions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DCHouseholdInformation().setVisible(true);
+                new IncomeQuestions().setVisible(true);
             }
         });
     }
@@ -240,17 +225,15 @@ public class DCHouseholdInformation extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<String> comboAB;
-    private javax.swing.JComboBox<String> comboCWD;
-    private javax.swing.JComboBox<String> comboDisability;
-    private javax.swing.JComboBox<String> comboPregnant;
+    private javax.swing.JComboBox<String> comboNoIncQues;
+    private javax.swing.JComboBox<String> comboUnearnedIncQues;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lblDisabilityQues1;
-    private javax.swing.JLabel lblStayQuestion1;
-    private javax.swing.JLabel lblStayQuestion2;
-    private javax.swing.JLabel lblStayQuestion3;
+    private javax.swing.JLabel lblEarnedIncQues;
+    private javax.swing.JLabel lblNoIncomeQues;
+    private javax.swing.JLabel lblUnearnedIncQues;
+    private javax.swing.JComboBox<String> xomboEarnedIncQues;
     // End of variables declaration//GEN-END:variables
 }

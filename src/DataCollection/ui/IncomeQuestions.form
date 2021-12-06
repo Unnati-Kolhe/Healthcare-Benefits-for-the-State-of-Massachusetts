@@ -31,7 +31,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+          <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -46,7 +46,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -71,7 +71,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="75" max="32767" attributes="0"/>
@@ -83,8 +83,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="98" max="32767" attributes="0"/>
+                      <Component id="jPanel3" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -96,7 +96,7 @@
                   <Font name="Lucida Grande" size="24" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Data Collection - Household Information"/>
+                <Property name="text" type="java.lang.String" value="Data Collection - Income Questions"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel3">
@@ -115,38 +115,32 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="74" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblDisabilityQues1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblEarnedIncQues" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                  <Component id="comboDisability" min="-2" pref="174" max="-2" attributes="0"/>
+                                  <Component id="xomboEarnedIncQues" min="-2" pref="174" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblStayQuestion2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblStayQuestion3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="comboAB" min="-2" pref="174" max="-2" attributes="0"/>
-                                      <Component id="comboCWD" min="-2" pref="174" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="lblNoIncomeQues" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="comboNoIncQues" min="-2" pref="174" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="btnSave" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                                          <Component id="btnNext" linkSize="1" min="-2" pref="111" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="lblStayQuestion1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="comboPregnant" min="-2" pref="174" max="-2" attributes="0"/>
+                                  <Component id="lblUnearnedIncQues" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="comboUnearnedIncQues" min="-2" pref="174" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
+                          <Component id="btnSave" linkSize="2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                          <Component id="btnNext" linkSize="2" min="-2" pref="111" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -155,45 +149,40 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblDisabilityQues1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboDisability" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEarnedIncQues" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="xomboEarnedIncQues" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblStayQuestion1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboPregnant" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblUnearnedIncQues" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboUnearnedIncQues" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblStayQuestion2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboCWD" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNoIncomeQues" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboNoIncQues" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="33" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblStayQuestion3" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboAB" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <EmptySpace pref="59" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnNext" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblDisabilityQues1">
+                <Component class="javax.swing.JLabel" name="lblEarnedIncQues">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lucida Grande" size="20" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Does the PI hold a disability of any kind?"/>
+                    <Property name="text" type="java.lang.String" value="Does the individual have an Earned Income?:"/>
                     <Property name="horizontalTextPosition" type="int" value="2"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="comboDisability">
+                <Component class="javax.swing.JComboBox" name="xomboEarnedIncQues">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
@@ -206,16 +195,16 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblStayQuestion1">
+                <Component class="javax.swing.JLabel" name="lblUnearnedIncQues">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lucida Grande" size="20" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Is there any pregnant woman in the house?"/>
+                    <Property name="text" type="java.lang.String" value="Does the individual have an unearned Income?:"/>
                     <Property name="horizontalTextPosition" type="int" value="2"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="comboPregnant">
+                <Component class="javax.swing.JComboBox" name="comboUnearnedIncQues">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
@@ -228,38 +217,16 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblStayQuestion2">
+                <Component class="javax.swing.JLabel" name="lblNoIncomeQues">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lucida Grande" size="20" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Is the person receiving CWD and WWD?"/>
+                    <Property name="text" type="java.lang.String" value="Does the individual have no Income?:"/>
                     <Property name="horizontalTextPosition" type="int" value="2"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="comboCWD">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="No"/>
-                        <StringItem index="1" value="Yes"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblStayQuestion3">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Lucida Grande" size="20" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Is Medicare Part A or B selected?"/>
-                    <Property name="horizontalTextPosition" type="int" value="2"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="comboAB">
+                <Component class="javax.swing.JComboBox" name="comboNoIncQues">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
