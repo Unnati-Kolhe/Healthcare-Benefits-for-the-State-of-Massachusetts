@@ -9,12 +9,12 @@ package DataCollection.ui;
  *
  * @author shubhangisrivastava
  */
-public class DCEarnedIncome extends javax.swing.JFrame {
+public class DCUnearnedIncome extends javax.swing.JFrame {
 
     /**
-     * Creates new form DCEarnedIncome
+     * Creates new form DCUnearnedIncome
      */
-    public DCEarnedIncome() {
+    public DCUnearnedIncome() {
         initComponents();
     }
 
@@ -33,25 +33,25 @@ public class DCEarnedIncome extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         lblFName = new javax.swing.JLabel();
         txtFName = new javax.swing.JTextField();
-        lblEIType = new javax.swing.JLabel();
-        lblEAFrequency = new javax.swing.JLabel();
-        lblEAIncSource = new javax.swing.JLabel();
-        comboEIType = new javax.swing.JComboBox<>();
-        comboEAFrequency = new javax.swing.JComboBox<>();
+        lblUEType = new javax.swing.JLabel();
+        lblUEFreq = new javax.swing.JLabel();
+        lblUEIncSource = new javax.swing.JLabel();
+        comboUEType = new javax.swing.JComboBox<>();
+        comboUEFreq = new javax.swing.JComboBox<>();
         btnSave = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         lblCSCD = new javax.swing.JLabel();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         lblClientID1 = new javax.swing.JLabel();
         txtClientID1 = new javax.swing.JTextField();
-        txtEAIncSource = new javax.swing.JTextField();
+        txtUEIncSource = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        lblIncStDt = new javax.swing.JLabel();
-        DtIncStDt = new com.toedter.calendar.JDateChooser();
-        lblIncEndDt = new javax.swing.JLabel();
-        DtIncEndDt = new com.toedter.calendar.JDateChooser();
-        lblEAIncAmt = new javax.swing.JLabel();
-        txtEAIncAmt = new javax.swing.JTextField();
+        lblUEStDt = new javax.swing.JLabel();
+        DtUIStDt = new com.toedter.calendar.JDateChooser();
+        lblUIEndDt = new javax.swing.JLabel();
+        DtUIEndDt = new com.toedter.calendar.JDateChooser();
+        lblUIIncAmt = new javax.swing.JLabel();
+        txtUIIncAmt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +59,7 @@ public class DCEarnedIncome extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Data Collection - Earned Income");
+        jLabel1.setText("Data Collection - Unearned Income");
 
         jPanel3.setBackground(new java.awt.Color(197, 221, 243));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -74,18 +74,18 @@ public class DCEarnedIncome extends javax.swing.JFrame {
             }
         });
 
-        lblEIType.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblEIType.setText("Type:");
+        lblUEType.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblUEType.setText("Type:");
 
-        lblEAFrequency.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblEAFrequency.setText("Frequency:");
+        lblUEFreq.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblUEFreq.setText("Frequency:");
 
-        lblEAIncSource.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblEAIncSource.setText("Income Source");
+        lblUEIncSource.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblUEIncSource.setText("Income Source");
 
-        comboEIType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wages", "Bonus", "Commission", "Military Pay" }));
+        comboUEType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wages", "Bonus", "Commission", "Military Pay" }));
 
-        comboEAFrequency.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monthly", "Quarterly", "Semi-Anually", "Anually", "Bi-Weekly" }));
+        comboUEFreq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monthly", "Quarterly", "Semi-Anually", "Anually", "Bi-Weekly" }));
 
         btnSave.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         btnSave.setText("Save");
@@ -106,26 +106,24 @@ public class DCEarnedIncome extends javax.swing.JFrame {
 
         txtClientID1.setEnabled(false);
 
-        txtEAIncSource.setEnabled(false);
-        txtEAIncSource.addActionListener(new java.awt.event.ActionListener() {
+        txtUEIncSource.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEAIncSourceActionPerformed(evt);
+                txtUEIncSourceActionPerformed(evt);
             }
         });
 
-        lblIncStDt.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblIncStDt.setText("Income Start Date:");
+        lblUEStDt.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblUEStDt.setText("Income Start Date:");
 
-        lblIncEndDt.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblIncEndDt.setText("Income End Date:");
+        lblUIEndDt.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblUIEndDt.setText("Income End Date:");
 
-        lblEAIncAmt.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblEAIncAmt.setText("Income Amount");
+        lblUIIncAmt.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblUIIncAmt.setText("Income Amount");
 
-        txtEAIncAmt.setEnabled(false);
-        txtEAIncAmt.addActionListener(new java.awt.event.ActionListener() {
+        txtUIIncAmt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEAIncAmtActionPerformed(evt);
+                txtUIIncAmtActionPerformed(evt);
             }
         });
 
@@ -136,14 +134,14 @@ public class DCEarnedIncome extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblIncStDt)
-                    .addComponent(lblIncEndDt)
-                    .addComponent(lblEAIncAmt))
+                    .addComponent(lblUEStDt)
+                    .addComponent(lblUIEndDt)
+                    .addComponent(lblUIIncAmt))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(DtIncEndDt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DtIncStDt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtEAIncAmt))
+                    .addComponent(DtUIEndDt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DtUIStDt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtUIIncAmt))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -151,16 +149,16 @@ public class DCEarnedIncome extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DtIncStDt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblIncStDt))
+                    .addComponent(DtUIStDt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUEStDt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DtIncEndDt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblIncEndDt))
+                    .addComponent(DtUIEndDt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUIEndDt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEAIncAmt)
-                    .addComponent(txtEAIncAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUIIncAmt)
+                    .addComponent(txtUIIncAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -175,21 +173,21 @@ public class DCEarnedIncome extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(lblEAIncSource)
+                                    .addComponent(lblUEIncSource)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                                    .addComponent(txtEAIncSource, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtUEIncSource, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblFName)
                                         .addComponent(lblClientID1)
                                         .addComponent(lblCSCD)
-                                        .addComponent(lblEIType)
-                                        .addComponent(lblEAFrequency))
+                                        .addComponent(lblUEType)
+                                        .addComponent(lblUEFreq))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtFName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboEIType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboEAFrequency, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(comboUEType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(comboUEFreq, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtClientID1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                                 .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -204,9 +202,6 @@ public class DCEarnedIncome extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90))
         );
-
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnNext, btnSave});
-
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -224,16 +219,16 @@ public class DCEarnedIncome extends javax.swing.JFrame {
                     .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEIType)
-                    .addComponent(comboEIType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUEType)
+                    .addComponent(comboUEType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEAFrequency)
-                    .addComponent(comboEAFrequency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUEFreq)
+                    .addComponent(comboUEFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEAIncSource)
-                    .addComponent(txtEAIncSource, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUEIncSource)
+                    .addComponent(txtUEIncSource, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -290,7 +285,7 @@ public class DCEarnedIncome extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -304,13 +299,13 @@ public class DCEarnedIncome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void txtEAIncSourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEAIncSourceActionPerformed
+    private void txtUEIncSourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUEIncSourceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEAIncSourceActionPerformed
+    }//GEN-LAST:event_txtUEIncSourceActionPerformed
 
-    private void txtEAIncAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEAIncAmtActionPerformed
+    private void txtUIIncAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUIIncAmtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEAIncAmtActionPerformed
+    }//GEN-LAST:event_txtUIIncAmtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,31 +324,31 @@ public class DCEarnedIncome extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DCEarnedIncome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DCUnearnedIncome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DCEarnedIncome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DCUnearnedIncome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DCEarnedIncome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DCUnearnedIncome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DCEarnedIncome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DCUnearnedIncome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DCEarnedIncome().setVisible(true);
+                new DCUnearnedIncome().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser DtIncEndDt;
-    private com.toedter.calendar.JDateChooser DtIncStDt;
+    private com.toedter.calendar.JDateChooser DtUIEndDt;
+    private com.toedter.calendar.JDateChooser DtUIStDt;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<String> comboEAFrequency;
-    private javax.swing.JComboBox<String> comboEIType;
+    private javax.swing.JComboBox<String> comboUEFreq;
+    private javax.swing.JComboBox<String> comboUEType;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -362,16 +357,16 @@ public class DCEarnedIncome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblCSCD;
     private javax.swing.JLabel lblClientID1;
-    private javax.swing.JLabel lblEAFrequency;
-    private javax.swing.JLabel lblEAIncAmt;
-    private javax.swing.JLabel lblEAIncSource;
-    private javax.swing.JLabel lblEIType;
     private javax.swing.JLabel lblFName;
-    private javax.swing.JLabel lblIncEndDt;
-    private javax.swing.JLabel lblIncStDt;
+    private javax.swing.JLabel lblUEFreq;
+    private javax.swing.JLabel lblUEIncSource;
+    private javax.swing.JLabel lblUEStDt;
+    private javax.swing.JLabel lblUEType;
+    private javax.swing.JLabel lblUIEndDt;
+    private javax.swing.JLabel lblUIIncAmt;
     private javax.swing.JTextField txtClientID1;
-    private javax.swing.JTextField txtEAIncAmt;
-    private javax.swing.JTextField txtEAIncSource;
     private javax.swing.JTextField txtFName;
+    private javax.swing.JTextField txtUEIncSource;
+    private javax.swing.JTextField txtUIIncAmt;
     // End of variables declaration//GEN-END:variables
 }

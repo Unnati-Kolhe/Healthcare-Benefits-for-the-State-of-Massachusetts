@@ -33,7 +33,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -97,7 +97,7 @@
                   <Font name="Lucida Grande" size="24" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Data Collection - Earned Income"/>
+                <Property name="text" type="java.lang.String" value="Data Collection - Unearned Income"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel3">
@@ -115,30 +115,30 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lblEAIncSource" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblUEIncSource" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace pref="40" max="32767" attributes="0"/>
-                                              <Component id="txtEAIncSource" min="-2" pref="190" max="-2" attributes="0"/>
+                                              <Component id="txtUEIncSource" min="-2" pref="190" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lblFName" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="lblClientID1" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="lblCSCD" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="lblEIType" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="lblEAFrequency" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblUEType" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblUEFreq" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="txtFName" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
-                                                  <Component id="comboEIType" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
-                                                  <Component id="comboEAFrequency" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
+                                                  <Component id="comboUEType" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
+                                                  <Component id="comboUEFreq" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -150,9 +150,9 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
-                                  <Component id="btnSave" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnSave" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                                  <Component id="btnNext" linkSize="1" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="btnNext" min="-2" pref="111" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="127" max="32767" attributes="0"/>
@@ -184,18 +184,18 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblEIType" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboEIType" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblUEType" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboUEType" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblEAFrequency" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboEAFrequency" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblUEFreq" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboUEFreq" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblEAIncSource" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtEAIncSource" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblUEIncSource" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtUEIncSource" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
@@ -226,7 +226,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFNameActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblEIType">
+                <Component class="javax.swing.JLabel" name="lblUEType">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lucida Grande" size="20" style="0"/>
@@ -234,7 +234,7 @@
                     <Property name="text" type="java.lang.String" value="Type:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblEAFrequency">
+                <Component class="javax.swing.JLabel" name="lblUEFreq">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lucida Grande" size="20" style="0"/>
@@ -242,7 +242,7 @@
                     <Property name="text" type="java.lang.String" value="Frequency:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblEAIncSource">
+                <Component class="javax.swing.JLabel" name="lblUEIncSource">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lucida Grande" size="20" style="0"/>
@@ -250,7 +250,7 @@
                     <Property name="text" type="java.lang.String" value="Income Source"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="comboEIType">
+                <Component class="javax.swing.JComboBox" name="comboUEType">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
@@ -265,7 +265,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="comboEAFrequency">
+                <Component class="javax.swing.JComboBox" name="comboUEFreq">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="5">
@@ -323,12 +323,9 @@
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtEAIncSource">
-                  <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
+                <Component class="javax.swing.JTextField" name="txtUEIncSource">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEAIncSourceActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUEIncSourceActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel4">
@@ -339,15 +336,15 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblIncStDt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblIncEndDt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEAIncAmt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUEStDt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUIEndDt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUIIncAmt" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="DtIncEndDt" max="32767" attributes="0"/>
-                                  <Component id="DtIncStDt" max="32767" attributes="0"/>
-                                  <Component id="txtEAIncAmt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="DtUIEndDt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="DtUIStDt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtUIIncAmt" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="33" max="32767" attributes="0"/>
                           </Group>
@@ -358,18 +355,18 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="DtIncStDt" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblIncStDt" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DtUIStDt" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUEStDt" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="DtIncEndDt" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblIncEndDt" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DtUIEndDt" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUIEndDt" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblEAIncAmt" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtEAIncAmt" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUIIncAmt" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtUIIncAmt" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="19" max="32767" attributes="0"/>
                           </Group>
@@ -377,7 +374,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="lblIncStDt">
+                    <Component class="javax.swing.JLabel" name="lblUEStDt">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Lucida Grande" size="20" style="0"/>
@@ -385,9 +382,9 @@
                         <Property name="text" type="java.lang.String" value="Income Start Date:"/>
                       </Properties>
                     </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="DtIncStDt">
+                    <Component class="com.toedter.calendar.JDateChooser" name="DtUIStDt">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblIncEndDt">
+                    <Component class="javax.swing.JLabel" name="lblUIEndDt">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Lucida Grande" size="20" style="0"/>
@@ -395,9 +392,9 @@
                         <Property name="text" type="java.lang.String" value="Income End Date:"/>
                       </Properties>
                     </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="DtIncEndDt">
+                    <Component class="com.toedter.calendar.JDateChooser" name="DtUIEndDt">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblEAIncAmt">
+                    <Component class="javax.swing.JLabel" name="lblUIIncAmt">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Lucida Grande" size="20" style="0"/>
@@ -405,12 +402,9 @@
                         <Property name="text" type="java.lang.String" value="Income Amount"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtEAIncAmt">
-                      <Properties>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
+                    <Component class="javax.swing.JTextField" name="txtUIIncAmt">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEAIncAmtActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUIIncAmtActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
