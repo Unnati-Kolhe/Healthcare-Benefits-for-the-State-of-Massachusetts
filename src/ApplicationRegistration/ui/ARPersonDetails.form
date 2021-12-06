@@ -149,13 +149,10 @@
                                                   <Component id="lblDob" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="lblLName" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
+                                              <EmptySpace min="185" pref="185" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                      <Component id="jDateChooser1" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="txtLName" min="-2" pref="190" max="-2" attributes="0"/>
+                                                  <Component id="txtLName" pref="190" max="32767" attributes="0"/>
+                                                  <Component id="jDateChooser2" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" attributes="0">
@@ -176,7 +173,7 @@
                                               <Component id="lblSSN" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                                          <Component id="txtSSN" max="32767" attributes="0"/>
+                                          <Component id="txtSSN" pref="190" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -208,19 +205,19 @@
                                       <Component id="txtMName" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="txtLName" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="lblLName" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="lblDob" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="txtLName" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jDateChooser2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblMarital" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtMarital" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -421,7 +418,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtSSN">
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
                 </Component>
               </SubComponents>
             </Container>
