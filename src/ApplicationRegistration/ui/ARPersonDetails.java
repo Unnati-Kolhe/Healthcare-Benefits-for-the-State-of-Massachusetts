@@ -361,8 +361,7 @@ public class ARPersonDetails extends javax.swing.JFrame {
     pst.setString(8,String.valueOf(comboGender.getSelectedItem()));
     pst.setString(9,txtPhone.getText());
     pst.setString(10,txtSSN.getText());
-    pst.executeUpdate(); 
-    JOptionPane.showMessageDialog(null, "Saved successfully");
+    pst.executeUpdate();
     }
     } catch(Exception ex) {
     JOptionPane.showMessageDialog(this, ex.getMessage());
