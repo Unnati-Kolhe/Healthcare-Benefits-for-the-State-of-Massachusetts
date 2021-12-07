@@ -53,7 +53,7 @@ public class ARFileClearance extends javax.swing.JFrame {
         if(rs2.next()){
          //    JOptionPane.showMessageDialog(this, "h6");
         String copy_client = rs2.getString("a.ssn");
-        //newcode
+        //newcode added new
        //  JOptionPane.showMessageDialog(this, "h7");
        // JOptionPane.showMessageDialog(this, "a.fname");
        //  JOptionPane.showMessageDialog(this, "h8");
