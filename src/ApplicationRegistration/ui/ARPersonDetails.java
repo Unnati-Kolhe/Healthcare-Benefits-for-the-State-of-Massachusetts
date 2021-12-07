@@ -375,6 +375,8 @@ public class ARPersonDetails extends javax.swing.JFrame {
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         ARFileClearance fc = new ARFileClearance();
         fc.setVisible(true);
+        
+        
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtLNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLNameActionPerformed

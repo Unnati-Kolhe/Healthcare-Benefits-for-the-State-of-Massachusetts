@@ -23,13 +23,20 @@ public class ARFileClearance extends javax.swing.JFrame {
     ResultSet rs = null;
     public ARFileClearance() {
         initComponents();
-         try{
-    String query = "SELECT fname FROM `person` LIMIT 1 DESC";
-    con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
-    rs = pst.executeQuery(query);
-    String curr_client = rs.getString("fname");
-    lblClient1.setText(curr_client);
-    } catch(Exception ex) {
+        fetch();
+    }
+    
+    public void fetch(){
+    try{
+        String query = "select * from person order by client_id desc limit 1;";
+        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst = con.prepareStatement(query);
+        rs = pst.executeQuery();
+        JOptionPane.showMessageDialog(this, " this is rs " +rs);
+        if(rs.next()){
+        String curr_client = rs.getString("fname");
+        lblClient1.setText(curr_client);}
+    }catch(Exception ex){
     JOptionPane.showMessageDialog(this, ex.getMessage());
     }
     }
