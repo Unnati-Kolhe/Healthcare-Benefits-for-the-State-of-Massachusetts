@@ -112,7 +112,6 @@ public class ARFileClearance extends javax.swing.JPanel {
         lblClient1 = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
-        btnLogout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jSplitPane1.setBackground(new java.awt.Color(102, 204, 255));
@@ -168,8 +167,6 @@ public class ARFileClearance extends javax.swing.JPanel {
             }
         });
 
-        btnLogout.setText("Logout");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -197,8 +194,6 @@ public class ARFileClearance extends javax.swing.JPanel {
                 .addComponent(btnDelete)
                 .addGap(41, 41, 41)
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -216,9 +211,8 @@ public class ARFileClearance extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete)
-                    .addComponent(btnNext)
-                    .addComponent(btnLogout))
-                .addGap(26, 26, 26))
+                    .addComponent(btnNext))
+                .addGap(27, 27, 27))
         );
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
@@ -304,6 +298,8 @@ public class ARFileClearance extends javax.swing.JPanel {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -315,7 +311,6 @@ public class ARFileClearance extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnNext;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
