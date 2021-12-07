@@ -5,6 +5,7 @@
  */
 package ApplicationRegistration.ui;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,19 +16,23 @@ import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-
+import javax.swing.JPanel;
 /**
  *
  * @author shubhangisrivastava
  */
-public class ARPersonDetails extends javax.swing.JFrame {
+public class ARPersonDetails extends javax.swing.JPanel {
 
+    private JPanel userProcessContainer;
     Connection con = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    public ARPersonDetails() {
-        initComponents();
+    public ARPersonDetails(JPanel userProcessContainer) {
+        this.userProcessContainer = userProcessContainer;
+     initComponents();  
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,8 +69,6 @@ public class ARPersonDetails extends javax.swing.JFrame {
         lblSSN = new javax.swing.JLabel();
         txtSSN = new javax.swing.JTextField();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -217,9 +220,6 @@ public class ARPersonDetails extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(165, Short.MAX_VALUE))
         );
-
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnNext, btnSave});
-
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -279,7 +279,7 @@ public class ARPersonDetails extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(163, 163, 163)
+                .addGap(137, 137, 137)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(158, Short.MAX_VALUE))
         );
@@ -308,8 +308,8 @@ public class ARPersonDetails extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -322,63 +322,11 @@ public class ARPersonDetails extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-    try{
-        
-    String pattern = "[A-Za-z]+";
-    String pattern2 = "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$";
-    String pattern3 = "^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$";
-
-    Pattern pat1 = Pattern.compile(pattern);
-    Pattern pat2 = Pattern.compile(pattern2);
-    Pattern pat3 = Pattern.compile(pattern3);
-    Matcher match = pat1.matcher(txtFName.getText());
-    Matcher match2 = pat1.matcher(txtMName.getText());
-    Matcher match3 = pat1.matcher(txtLName.getText());
-    Matcher match4 = pat2.matcher(txtPhone.getText());
-    Matcher match5 = pat3.matcher(txtSSN.getText());
-    
-    if(!match.matches() || !match2.matches() || !match3.matches() || !match4.matches() || !match5.matches()){
-        JOptionPane.showMessageDialog(null, "Please enter valid details");
-    }else{
-        
-    SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd"); 
-    
-    String query = "INSERT into person " + " (fname,mname,lname,dob,marital_status,race,ethnicity,gender,phone,ssn)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
-    pst = con.prepareStatement(query);
-    pst.setString(1, txtFName.getText());
-    pst.setString(2, txtMName.getText());
-    pst.setString(3, txtLName.getText());
-    pst.setString(4,Date_Format.format(jDateChooser2.getDate()));
-    pst.setString(5,txtMarital.getText());
-    pst.setString(6,String.valueOf(comboRace.getSelectedItem()));
-    pst.setString(7,String.valueOf(comboEth.getSelectedItem()));
-    pst.setString(8,String.valueOf(comboGender.getSelectedItem()));
-    pst.setString(9,txtPhone.getText());
-    pst.setString(10,txtSSN.getText());
-    pst.executeUpdate();
-    }
-    } catch(Exception ex) {
-    JOptionPane.showMessageDialog(this, ex.getMessage());
-    }
-    
-    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFNameActionPerformed
-
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        ARFileClearance fc = new ARFileClearance();
-        fc.setVisible(true);
-        
-        
-    }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtLNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLNameActionPerformed
         // TODO add your handling code here:
@@ -388,45 +336,60 @@ public class ARPersonDetails extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPhoneActionPerformed
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        try{
+
+            String pattern = "[A-Za-z]+";
+            String pattern2 = "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$";
+            String pattern3 = "^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$";
+
+            Pattern pat1 = Pattern.compile(pattern);
+            Pattern pat2 = Pattern.compile(pattern2);
+            Pattern pat3 = Pattern.compile(pattern3);
+            Matcher match = pat1.matcher(txtFName.getText());
+            Matcher match2 = pat1.matcher(txtMName.getText());
+            Matcher match3 = pat1.matcher(txtLName.getText());
+            Matcher match4 = pat2.matcher(txtPhone.getText());
+            Matcher match5 = pat3.matcher(txtSSN.getText());
+
+            if(!match.matches() || !match2.matches() || !match3.matches() || !match4.matches() || !match5.matches()){
+                JOptionPane.showMessageDialog(null, "Please enter valid details");
+            }else{
+
+                SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
+
+                String query = "INSERT into person " + " (fname,mname,lname,dob,marital_status,race,ethnicity,gender,phone,ssn)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst = con.prepareStatement(query);
+                pst.setString(1, txtFName.getText());
+                pst.setString(2, txtMName.getText());
+                pst.setString(3, txtLName.getText());
+                pst.setString(4,Date_Format.format(jDateChooser2.getDate()));
+                pst.setString(5,txtMarital.getText());
+                pst.setString(6,String.valueOf(comboRace.getSelectedItem()));
+                pst.setString(7,String.valueOf(comboEth.getSelectedItem()));
+                pst.setString(8,String.valueOf(comboGender.getSelectedItem()));
+                pst.setString(9,txtPhone.getText());
+                pst.setString(10,txtSSN.getText());
+                pst.executeUpdate();
+            }
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        
+        
+        ARFileClearance ar = new ARFileClearance();
+        jSplitPane1.setRightComponent(ar);
+    }//GEN-LAST:event_btnNextActionPerformed
+
     private void txtSSNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSSNActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSSNActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ARPersonDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ARPersonDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ARPersonDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ARPersonDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ARPersonDetails().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
