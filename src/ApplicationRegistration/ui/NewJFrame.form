@@ -204,12 +204,12 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtuser">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="aradmin"/>
+                    <Property name="text" type="java.lang.String" value="edadmin"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtpass">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="aradmin"/>
+                    <Property name="text" type="java.lang.String" value="edadmin"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtpassActionPerformed"/>
