@@ -38,11 +38,11 @@ public class ARFileClearance extends javax.swing.JFrame {
         pst = con.prepareStatement(query);
         rs = pst.executeQuery();
         if(rs.next()){
-        String curr_client = rs.getString("fname");
+        String curr_client = rs.getString("ssn");
         lblClient1.setText(curr_client);
         }
        // JOptionPane.showMessageDialog(this, "h1");
-        String query2 ="select a.fname from person a join(select fname, count(*) from person where fname=? group by fname HAVING count(*) > 1) b on a.fname = b.fname order by a.fname;";
+        String query2 ="select a.ssn from person a join(select ssn, count(*) from person where ssn=? group by ssn HAVING count(*) > 1) b on a.ssn = b.ssn order by a.ssn;";
         //JOptionPane.showMessageDialog(this, "h2");
         pst2 = con.prepareStatement(query2);
        //  JOptionPane.showMessageDialog(this, "h3");
@@ -52,7 +52,7 @@ public class ARFileClearance extends javax.swing.JFrame {
         // JOptionPane.showMessageDialog(this, "h5");
         if(rs2.next()){
          //    JOptionPane.showMessageDialog(this, "h6");
-        String copy_client = rs2.getString("a.fname");
+        String copy_client = rs2.getString("a.ssn");
        //  JOptionPane.showMessageDialog(this, "h7");
        // JOptionPane.showMessageDialog(this, "a.fname");
        //  JOptionPane.showMessageDialog(this, "h8");
