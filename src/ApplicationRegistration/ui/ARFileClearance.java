@@ -20,11 +20,16 @@ public class ARFileClearance extends javax.swing.JFrame {
 
     Connection con = null;
     PreparedStatement pst = null;
+    PreparedStatement pst2 = null;
     ResultSet rs = null;
+    ResultSet rs2 = null;
     public ARFileClearance() {
         initComponents();
         fetch();
     }
+    
+     //String query = "SELECT * FROM `user` WHERE username=? and password=? and type=?";
+    //pst.setString(1, txtuser.getText());
     
     public void fetch(){
     try{
@@ -32,10 +37,27 @@ public class ARFileClearance extends javax.swing.JFrame {
         con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
         pst = con.prepareStatement(query);
         rs = pst.executeQuery();
-        JOptionPane.showMessageDialog(this, " this is rs " +rs);
         if(rs.next()){
         String curr_client = rs.getString("fname");
-        lblClient1.setText(curr_client);}
+        lblClient1.setText(curr_client);
+        }
+       // JOptionPane.showMessageDialog(this, "h1");
+        String query2 ="select a.fname from person a join(select fname, count(*) from person where fname=? group by fname HAVING count(*) > 1) b on a.fname = b.fname order by a.fname;";
+        //JOptionPane.showMessageDialog(this, "h2");
+        pst2 = con.prepareStatement(query2);
+       //  JOptionPane.showMessageDialog(this, "h3");
+        pst2.setString(1, lblClient1.getText());
+        // JOptionPane.showMessageDialog(this, "h4");
+        rs2 = pst2.executeQuery();
+        // JOptionPane.showMessageDialog(this, "h5");
+        if(rs2.next()){
+         //    JOptionPane.showMessageDialog(this, "h6");
+        String copy_client = rs2.getString("a.fname");
+       //  JOptionPane.showMessageDialog(this, "h7");
+       // JOptionPane.showMessageDialog(this, "a.fname");
+       //  JOptionPane.showMessageDialog(this, "h8");
+        llClient2.setText(copy_client);
+        }
     }catch(Exception ex){
     JOptionPane.showMessageDialog(this, ex.getMessage());
     }
