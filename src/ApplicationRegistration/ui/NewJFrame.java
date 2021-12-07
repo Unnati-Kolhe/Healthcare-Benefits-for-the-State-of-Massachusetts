@@ -82,9 +82,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
         lbltype.setText("User Type");
 
-        txtuser.setText("aradmin");
+        txtuser.setText("edadmin");
 
-        txtpass.setText("aradmin");
+        txtpass.setText("edadmin");
         txtpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpassActionPerformed(evt);
@@ -204,9 +204,12 @@ public class NewJFrame extends javax.swing.JFrame {
                     jSplitPane1.setRightComponent(ar);
                     //this.setVisible(false);
                 } else if(dropdown.getSelectedIndex()==1){
-                    ARFileClearance ed = new ARFileClearance();
-                    ed.setVisible(true);
-                    this.setVisible(false);
+//                    ARFileClearance ed = new ARFileClearance();
+//                    ed.setVisible(true);
+//                    this.setVisible(false);
+                    
+                    SearchClient sc = new SearchClient();
+                    jSplitPane1.setRightComponent(sc);
                 } else if(dropdown.getSelectedIndex()==2){
                     NOAdmin no = new NOAdmin();
                     no.setVisible(true);
