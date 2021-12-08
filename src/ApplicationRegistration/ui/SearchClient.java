@@ -179,7 +179,8 @@ public class SearchClient extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinueActionPerformed
-        // TODO add your handling code here:
+       
+        
         DCPersonDetails dc = new DCPersonDetails();
         jSplitPane1.setRightComponent(dc);
         
