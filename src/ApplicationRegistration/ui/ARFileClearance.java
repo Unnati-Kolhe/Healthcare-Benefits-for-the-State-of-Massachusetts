@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 /**
  *
  * @author shubhangisrivastava
@@ -29,6 +30,7 @@ public class ARFileClearance extends javax.swing.JPanel {
     public ARFileClearance() {
         initComponents();
         fetch();
+        
         
         btnLogout.addActionListener(new ActionListener(){
             
@@ -51,9 +53,7 @@ public class ARFileClearance extends javax.swing.JPanel {
 //               // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //            }
         });
-           
-            
-            
+     
         
     }
     
@@ -62,8 +62,10 @@ public class ARFileClearance extends javax.swing.JPanel {
     public void fetch(){
     try{
         String query = "select * from person order by client_id desc limit 1;";
+       // String querynew = "delete from person where ssn=?;";
         con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
         pst = con.prepareStatement(query);
+        //pst = con.prepareStatement(querynew);
         rs = pst.executeQuery();
         if(rs.next()){
         String curr_client = rs.getString("ssn");
@@ -87,10 +89,35 @@ public class ARFileClearance extends javax.swing.JPanel {
        //  JOptionPane.showMessageDialog(this, "h8");
         llClient2.setText(copy_client);
         }
+        if(lblClient1.getText() == llClient2.getText()) {
+            String querynew = "delete from person where ssn=?";
+            
+        }
     }catch(Exception ex){
     JOptionPane.showMessageDialog(this, ex.getMessage());
     }
     }
+    
+//    public void remove() {
+//        try {
+//        String querynew = "delete from person where ssn=?";
+//        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+//        pst = con.prepareStatement(querynew);
+//        if(rs.next()){
+//            
+////        String curr_client = rs.getString("ssn");
+////       lblClient1.setText(curr_client);           
+////        String copy_Client =rs2.getString("ssn");
+////        llClient2.setText(copy_Client);       
+////        if(curr_client == copy_Client) {
+//////            rs = pst.executeQuery(querynew);
+////        
+////        }
+//        }
+//        }catch(Exception ex){
+//    JOptionPane.showMessageDialog(this, ex.getMessage());
+//    }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,7 +138,6 @@ public class ARFileClearance extends javax.swing.JPanel {
         llClient2 = new javax.swing.JLabel();
         lblClient1 = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
-        btnNext = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -153,23 +179,20 @@ public class ARFileClearance extends javax.swing.JPanel {
         lblClient1.setText("CLIENT1");
 
         btnDelete.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
-        btnDelete.setText("Save");
+        btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
 
-        btnNext.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
-        btnNext.setText("Next");
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextActionPerformed(evt);
-            }
-        });
-
         btnLogout.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -197,8 +220,6 @@ public class ARFileClearance extends javax.swing.JPanel {
                 .addGap(220, 220, 220)
                 .addComponent(btnDelete)
                 .addGap(41, 41, 41)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
                 .addComponent(btnLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -217,7 +238,6 @@ public class ARFileClearance extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete)
-                    .addComponent(btnNext)
                     .addComponent(btnLogout))
                 .addGap(26, 26, 26))
         );
@@ -270,15 +290,14 @@ public class ARFileClearance extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+        //remove();
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-
-        NewJFrame nj = new NewJFrame();
-        jSplitPane1.setRightComponent(nj);
-
-    }//GEN-LAST:event_btnNextActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     
 //    public static void main(String args[]) {
@@ -317,7 +336,6 @@ public class ARFileClearance extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnNext;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

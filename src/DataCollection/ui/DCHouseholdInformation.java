@@ -5,6 +5,8 @@
  */
 package DataCollection.ui;
 
+import ApplicationRegistration.ui.ARPersonDetails;
+
 /**
  *
  * @author shubhangisrivastava
@@ -82,6 +84,11 @@ public class DCHouseholdInformation extends javax.swing.JPanel {
         lblDisabilityQues1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         comboDisability.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
+        comboDisability.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboDisabilityActionPerformed(evt);
+            }
+        });
 
         lblStayQuestion1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblStayQuestion1.setText("Is there any pregnant woman in the house?");
@@ -226,9 +233,15 @@ public class DCHouseholdInformation extends javax.swing.JPanel {
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
        
-        //if(com)
-        
+       if(comboDisability.getSelectedIndex()==1) {
+            DCDisability dis = new DCDisability();
+                    jSplitPane1.setRightComponent(dis);
+       } 
     }//GEN-LAST:event_btnNextActionPerformed
+
+    private void comboDisabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDisabilityActionPerformed
+  
+    }//GEN-LAST:event_comboDisabilityActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
