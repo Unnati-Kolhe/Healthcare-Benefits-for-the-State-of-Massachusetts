@@ -5,19 +5,77 @@
  */
 package DataCollection.ui;
 
+import ApplicationRegistration.ui.SearchClient;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shubhangisrivastava
  */
 public class DCPersonDetails extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DCPersonDetailss
-     */
+   
+ 
+    Connection con = null;
+    PreparedStatement pst = null;
+    PreparedStatement pst2 = null;
+    ResultSet rs = null;
+    ResultSet rs2 = null;
     public DCPersonDetails() {
         initComponents();
+       fetch();
     }
-
+     public void fetch(){
+    try{
+        String query = "select * from searchclient order by client_id desc limit 1;";
+        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst = con.prepareStatement(query);
+        rs = pst.executeQuery();
+        if(rs.next()){
+        String curr_client_id = rs.getString("client_id");
+        lblClient1.setText(curr_client_id);
+        }
+       // JOptionPane.showMessageDialog(this, "h1");
+       
+       String query2 = "select * from person p inner join searchclient sc where p.client_id=?";
+        //JOptionPane.showMessageDialog(this, "h2");
+        pst2 = con.prepareStatement(query2);
+       //  JOptionPane.showMessageDialog(this, "h3");
+        pst2.setString(1, lblClient1.getText());
+        // JOptionPane.showMessageDialog(this, "h4");
+        rs2 = pst2.executeQuery();
+        // JOptionPane.showMessageDialog(this, "h5");
+        if(rs2.next()){
+         //    JOptionPane.showMessageDialog(this, "h6");
+        String fname= rs2.getString("p.fname");
+        txtFName.setText(fname);
+        String mname = rs2.getString("p.mname");
+        txtMName.setText(mname);
+        String lname = rs2.getString("p.lname");
+        txtLName.setText(lname);
+        String DOB = rs2.getString("p.dob");
+        txtDob.setText(DOB);
+        String maritalstatus = rs2.getString("p.marital_status");
+        txtMarital.setText(maritalstatus);
+        String race = rs2.getString("p.race");
+        txtRace.setText(race);
+        String eth = rs2.getString("p.ethnicity");
+        txtEthnicity.setText(eth);
+        String gender = rs2.getString("p.gender");
+        txtGender.setText(gender);
+        String ph_num = rs2.getString("p.phone");
+        txtPhone.setText(ph_num);
+        String ssn = rs2.getString("p.ssn");
+        txtSSN.setText(ssn);
+        }
+    }catch(Exception ex){
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,15 +104,17 @@ public class DCPersonDetails extends javax.swing.JPanel {
         lblEth = new javax.swing.JLabel();
         lblGender = new javax.swing.JLabel();
         txtMarital = new javax.swing.JTextField();
-        comboRace = new javax.swing.JComboBox<>();
-        comboEth = new javax.swing.JComboBox<>();
-        comboGender = new javax.swing.JComboBox<>();
         lblPhone = new javax.swing.JLabel();
         txtPhone = new javax.swing.JTextField();
         btnNext = new javax.swing.JButton();
         lblSSN = new javax.swing.JLabel();
         txtSSN = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        lblClient = new javax.swing.JLabel();
+        lblClient1 = new javax.swing.JLabel();
+        txtDob = new javax.swing.JTextField();
+        txtRace = new javax.swing.JTextField();
+        txtEthnicity = new javax.swing.JTextField();
+        txtGender = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(102, 204, 255));
 
@@ -124,15 +184,6 @@ public class DCPersonDetails extends javax.swing.JPanel {
 
         txtMarital.setEnabled(false);
 
-        comboRace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hispanic/Latino", "American Indian", "African American", "Native Hawaiian", "White" }));
-        comboRace.setEnabled(false);
-
-        comboEth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hispanic", "Native Americans", "Asian", "Latin", " " }));
-        comboEth.setEnabled(false);
-
-        comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male ", "Female", " " }));
-        comboGender.setEnabled(false);
-
         lblPhone.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblPhone.setText("Phone Number:");
 
@@ -151,12 +202,28 @@ public class DCPersonDetails extends javax.swing.JPanel {
 
         txtSSN.setEnabled(false);
 
-        jDateChooser1.setEnabled(false);
+        lblClient.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClient.setText("Client ID:");
+
+        lblClient1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClient1.setText("Client ID:");
+
+        txtDob.setEnabled(false);
+
+        txtRace.setEnabled(false);
+
+        txtEthnicity.setEnabled(false);
+
+        txtGender.setEnabled(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(303, 303, 303)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(119, 119, 119)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -173,79 +240,79 @@ public class DCPersonDetails extends javax.swing.JPanel {
                                     .addComponent(lblMarital)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtMarital)
-                                .addComponent(comboRace, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboEth, 0, 190, Short.MAX_VALUE)
-                                .addComponent(comboGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtPhone, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addComponent(txtMarital, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                .addComponent(txtPhone, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtRace)
+                                .addComponent(txtGender)
+                                .addComponent(txtEthnicity)))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblDob)
                                 .addComponent(lblLName))
                             .addGap(185, 185, 185)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtLName, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                .addComponent(txtDob)))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblMName)
-                                .addComponent(lblFName))
+                                .addComponent(lblFName)
+                                .addComponent(lblClient))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtMName, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(txtFName))))
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblClient1)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtMName, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                    .addComponent(txtFName)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPhone)
                             .addComponent(lblSSN))
                         .addGap(163, 163, 163)
-                        .addComponent(txtSSN)))
+                        .addComponent(txtSSN, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
                 .addContainerGap(165, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(303, 303, 303)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblClient)
+                    .addComponent(lblClient1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFName)
+                    .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMName)
+                    .addComponent(txtMName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFName)
-                            .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblLName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMName)
-                            .addComponent(txtMName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblDob))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(lblLName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblDob)))
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMarital)
-                            .addComponent(txtMarital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblRace)
-                            .addComponent(comboRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblEth))
-                    .addComponent(comboEth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMarital)
+                    .addComponent(txtMarital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRace)
+                    .addComponent(txtRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEth)
+                    .addComponent(txtEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGender)
-                    .addComponent(comboGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPhone)
@@ -368,10 +435,6 @@ public class DCPersonDetails extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
-    private javax.swing.JComboBox<String> comboEth;
-    private javax.swing.JComboBox<String> comboGender;
-    private javax.swing.JComboBox<String> comboRace;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -379,6 +442,8 @@ public class DCPersonDetails extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblClient;
+    private javax.swing.JLabel lblClient1;
     private javax.swing.JLabel lblDob;
     private javax.swing.JLabel lblEth;
     private javax.swing.JLabel lblFName;
@@ -389,11 +454,15 @@ public class DCPersonDetails extends javax.swing.JPanel {
     private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblRace;
     private javax.swing.JLabel lblSSN;
+    private javax.swing.JTextField txtDob;
+    private javax.swing.JTextField txtEthnicity;
     private javax.swing.JTextField txtFName;
+    private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtLName;
     private javax.swing.JTextField txtMName;
     private javax.swing.JTextField txtMarital;
     private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtRace;
     private javax.swing.JTextField txtSSN;
     // End of variables declaration//GEN-END:variables
 }
