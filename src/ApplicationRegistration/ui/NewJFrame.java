@@ -5,6 +5,7 @@
  */
 package ApplicationRegistration.ui;
 
+import DataCollection.ui.DCPersonDetails;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ import javax.swing.JPanel;
  * @author shubhangisrivastava
  */
 public class NewJFrame extends javax.swing.JFrame {
-
+DCPersonDetails pd;
     Connection con = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -208,7 +209,7 @@ public class NewJFrame extends javax.swing.JFrame {
 //                    ed.setVisible(true);
 //                    this.setVisible(false);
                     
-                    SearchClient sc = new SearchClient();
+                    SearchClient sc = new SearchClient(pd);
                     jSplitPane1.setRightComponent(sc);
                 } else if(dropdown.getSelectedIndex()==2){
                     NOAdmin no = new NOAdmin();
