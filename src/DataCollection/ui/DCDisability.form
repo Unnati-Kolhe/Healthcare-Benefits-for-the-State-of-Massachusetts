@@ -76,15 +76,24 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel1" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="92" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jComboBox1" min="-2" pref="169" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" pref="565" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="120" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -93,9 +102,14 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="49" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="106" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jPanel3" min="-2" pref="353" max="-2" attributes="0"/>
+                      <EmptySpace pref="132" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -117,52 +131,48 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                          <EmptySpace pref="80" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblCSCD" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblClientID" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDisType" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDisStDt" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblVerify" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="btnSave" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                  <Component id="btnNext" linkSize="1" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblVerify1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblBlindVerify" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="251" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="comboBlindVerify" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jDateChooser2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtClientID" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
-                                          <Component id="comboVerify" alignment="0" pref="178" max="32767" attributes="0"/>
-                                          <Component id="chkBlind" alignment="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="comboDisabilityType" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="DtDisStDt" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="lblClientID" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblDisType" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblDisStDt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblVerify" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblVerify1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblBlindVerify" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="251" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="comboBlindVerify" min="-2" pref="170" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txtClientID" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
+                                                  <Component id="comboVerify" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="comboDisabilityType" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="DtDisStDt" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="chkBlind" min="-2" pref="189" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnSave" linkSize="1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="btnNext" linkSize="1" min="-2" pref="111" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblCSCD" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jDateChooser2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblClientID" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="txtClientID" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -187,7 +197,7 @@
                               <Component id="lblVerify1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="chkBlind" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblBlindVerify" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="comboBlindVerify" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -197,20 +207,12 @@
                               <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnNext" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblCSCD">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Lucida Grande" size="20" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="CSCD:"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="lblClientID">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -218,8 +220,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Client ID:"/>
                   </Properties>
-                </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtClientID">
                 </Component>
@@ -234,9 +234,10 @@
                 <Component class="javax.swing.JComboBox" name="comboDisabilityType">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="SSI"/>
-                        <StringItem index="1" value="SSA"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Not Applicable"/>
+                        <StringItem index="1" value="SSI"/>
+                        <StringItem index="2" value="SSA"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -265,9 +266,10 @@
                 <Component class="javax.swing.JComboBox" name="comboVerify">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Hard Copy"/>
-                        <StringItem index="1" value="Pending"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Not Applicable"/>
+                        <StringItem index="1" value="Hard Copy"/>
+                        <StringItem index="2" value="Pending"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -321,9 +323,10 @@
                 <Component class="javax.swing.JComboBox" name="comboBlindVerify">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Hard Copy"/>
-                        <StringItem index="1" value="Pending"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Not Applicable"/>
+                        <StringItem index="1" value="Hard Copy"/>
+                        <StringItem index="2" value="Pending"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -341,6 +344,30 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Data Collection - Disability"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Grande" size="20" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Does the PI hold disability of any kind?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox1">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Yes"/>
+                    <StringItem index="1" value="No"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

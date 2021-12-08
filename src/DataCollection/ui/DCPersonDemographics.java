@@ -315,7 +315,7 @@ public class DCPersonDemographics extends javax.swing.JPanel {
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
-         DCHouseholdInformation dh = new DCHouseholdInformation();
+         DCDisability dh = new DCDisability();
         jSplitPane1.setRightComponent(dh);
                                            
     }//GEN-LAST:event_btnNextActionPerformed
