@@ -240,7 +240,7 @@ public class DCDisability extends javax.swing.JPanel {
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
        
         DCHouseholdInformation hh = new DCHouseholdInformation();
-        
+       
     }//GEN-LAST:event_btnNextActionPerformed
     
     

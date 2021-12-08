@@ -25,6 +25,7 @@ public class ARFileClearance extends javax.swing.JPanel {
     Connection con = null;
     PreparedStatement pst = null;
     PreparedStatement pst2 = null;
+     PreparedStatement pst3 = null;
     ResultSet rs = null;
     ResultSet rs2 = null;
     public ARFileClearance() {
@@ -89,10 +90,9 @@ public class ARFileClearance extends javax.swing.JPanel {
        //  JOptionPane.showMessageDialog(this, "h8");
         llClient2.setText(copy_client);
         }
-        if(lblClient1.getText() == llClient2.getText()) {
-            String querynew = "delete from person where ssn=?";
-            
-        }
+        
+        
+        
     }catch(Exception ex){
     JOptionPane.showMessageDialog(this, ex.getMessage());
     }
@@ -290,8 +290,13 @@ public class ARFileClearance extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        //remove();
-        
+       try{
+        String query3 = "delete from person order by client_id desc limit 1;";
+        pst3 = con.prepareStatement(query3);
+        pst3.executeUpdate(query3);
+         }catch(Exception ex){
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
