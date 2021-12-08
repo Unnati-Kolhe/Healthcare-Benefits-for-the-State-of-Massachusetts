@@ -4,15 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/ApplicationRegistration/ui/SearchClient.java</file>
-            <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/DataCollection/ui/DCPersonDemographics.java</file>
             <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/DataCollection/ui/DCPersonDetails.java</file>
-            <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/DataCollection/ui/DCLivingArrangement.java</file>
             <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/DataCollection/ui/DCRelationship.java</file>
             <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/ApplicationRegistration/ui/ARPersonDetails.java</file>
             <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/ApplicationRegistration/ui/NewJFrame.java</file>
+            <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/ApplicationRegistration/ui/NOAdmin.java</file>
             <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/ApplicationRegistration/ui/ARFileClearance.java</file>
-            <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/DataCollection/ui/DCEarnedIncome.java</file>
             <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/ApplicationRegistration/ui/Customer.java</file>
+            <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/ApplicationRegistration/ui/MultiUserLogin.java</file>
             <file>file:/Users/shubhangisrivastava/NetBeansProjects/Final_Project/src/DataCollection/ui/DCHouseholdInformation.java</file>
         </group>
     </open-files>
