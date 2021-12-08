@@ -42,7 +42,6 @@ public class DCHouseholdInformation extends javax.swing.JPanel {
         comboCWD = new javax.swing.JComboBox<>();
         lblStayQuestion3 = new javax.swing.JLabel();
         comboAB = new javax.swing.JComboBox<>();
-        btnSave = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
 
         jSplitPane1.setBackground(new java.awt.Color(102, 204, 255));
@@ -102,16 +101,13 @@ public class DCHouseholdInformation extends javax.swing.JPanel {
 
         comboAB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
-        btnSave.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
         btnNext.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         btnNext.setText("Next");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -127,18 +123,15 @@ public class DCHouseholdInformation extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblStayQuestion2)
-                            .addComponent(lblStayQuestion3))
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblStayQuestion3)))
                         .addGap(47, 47, 47)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(comboAB, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboCWD, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(btnSave)
-                                .addGap(66, 66, 66)
-                                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblStayQuestion1))
+                        .addComponent(lblStayQuestion1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(comboPregnant, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18))
@@ -162,11 +155,9 @@ public class DCHouseholdInformation extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStayQuestion3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(comboAB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
-                    .addComponent(btnNext))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnNext)
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -233,14 +224,15 @@ public class DCHouseholdInformation extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSaveActionPerformed
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+       
+        //if(com)
+        
+    }//GEN-LAST:event_btnNextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> comboAB;
     private javax.swing.JComboBox<String> comboCWD;
     private javax.swing.JComboBox<String> comboDisability;
