@@ -5,8 +5,6 @@
  */
 package ApplicationRegistration.ui;
 
-<<<<<<< HEAD
-=======
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,20 +15,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
->>>>>>> main
 /**
  *
  * @author shubhangisrivastava
  */
 public class ARFileClearance extends javax.swing.JPanel {
 
-<<<<<<< HEAD
-    /**
-     * Creates new form ARFileClearance
-     */
-    public ARFileClearance() {
-        initComponents();
-=======
     Connection con = null;
     PreparedStatement pst = null;
     PreparedStatement pst2 = null;
@@ -100,7 +90,6 @@ public class ARFileClearance extends javax.swing.JPanel {
     }catch(Exception ex){
     JOptionPane.showMessageDialog(this, ex.getMessage());
     }
->>>>>>> main
     }
 
     /**
@@ -112,8 +101,6 @@ public class ARFileClearance extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< HEAD
-=======
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -265,23 +252,10 @@ public class ARFileClearance extends javax.swing.JPanel {
 
         jSplitPane1.setRightComponent(jPanel2);
 
->>>>>>> main
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-=======
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSplitPane1)
@@ -354,6 +328,5 @@ public class ARFileClearance extends javax.swing.JPanel {
     private javax.swing.JLabel lblFName;
     private javax.swing.JLabel lblFName2;
     private javax.swing.JLabel llClient2;
->>>>>>> main
     // End of variables declaration//GEN-END:variables
 }
