@@ -235,8 +235,23 @@ public class DCHouseholdInformation extends javax.swing.JPanel {
        
        if(comboDisability.getSelectedIndex()==1) {
             DCDisability dis = new DCDisability();
-                    jSplitPane1.setRightComponent(dis);
+            jSplitPane1.setRightComponent(dis);
        } 
+       
+       if(comboPregnant.getSelectedIndex()==1) {
+           DcPregnancy preg = new DcPregnancy();
+           jSplitPane1.setRightComponent(preg);
+       }
+       
+       if(comboCWD.getSelectedIndex()==1){
+           DCCwdWwd cwd = new DCCwdWwd();
+           jSplitPane1.setRightComponent(cwd);
+       }
+       
+        if(comboAB.getSelectedIndex()==1){
+           DCMedicare med = new DCMedicare();
+           jSplitPane1.setRightComponent(med);
+       }
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void comboDisabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDisabilityActionPerformed

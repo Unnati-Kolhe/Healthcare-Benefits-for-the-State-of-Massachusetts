@@ -137,10 +137,8 @@
                                           <Component id="txtClientID" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
                                           <Component id="comboVerify" alignment="0" pref="178" max="32767" attributes="0"/>
                                           <Component id="chkBlind" alignment="0" pref="0" max="32767" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="comboDisabilityType" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="DtDisStDt" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="comboDisabilityType" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="DtDisStDt" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -308,6 +306,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Next"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblBlindVerify">
                   <Properties>
