@@ -191,7 +191,6 @@ public class SearchClient extends javax.swing.JPanel {
 
 
         try{
-           // String query = "INSERT into searchclient " + " (client_id)" + " values(?)";
             String query = "INSERT into searchclient " + " (client_id)" + " values (?)";
             con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
             pst = con.prepareStatement(query);

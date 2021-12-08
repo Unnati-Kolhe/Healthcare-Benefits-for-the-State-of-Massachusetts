@@ -31,7 +31,7 @@ public class DCPersonDetails extends javax.swing.JPanel {
     }
      public void fetch(){
     try{
-        String query = "select * from searchclient order by client_id desc limit 1;";
+        String query = "select * from searchclient order by id desc limit 1;";
         con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
         pst = con.prepareStatement(query);
         rs = pst.executeQuery();

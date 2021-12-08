@@ -5,19 +5,50 @@
  */
 package DataCollection.ui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shubhangisrivastava
  */
 public class DCRelationship extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DCRelationshipp
-     */
+    Connection con = null;
+    PreparedStatement pst = null;
+    PreparedStatement pst2 = null;
+    ResultSet rs = null;
+    ResultSet rs2 = null;
     public DCRelationship() {
         initComponents();
+         fetch();
     }
 
+    public void fetch(){
+    try{
+        String query = "select * from searchclient order by id desc limit 1;";
+        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst = con.prepareStatement(query);
+        rs = pst.executeQuery();
+        if(rs.next()){
+        String curr_client = rs.getString("client_id");
+        lblClientID1.setText(curr_client);
+        
+        
+        }
+    }catch(Exception ex){
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
+    }
+    
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,7 +68,6 @@ public class DCRelationship extends javax.swing.JPanel {
         lblClientID = new javax.swing.JLabel();
         lblCSCD = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
-        txtClientID = new javax.swing.JTextField();
         lblRelativeName = new javax.swing.JLabel();
         txtRelativeName = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
@@ -45,10 +75,10 @@ public class DCRelationship extends javax.swing.JPanel {
         txtRelativeAge = new javax.swing.JTextField();
         lblRelationship = new javax.swing.JLabel();
         txtRelationship = new javax.swing.JTextField();
+        lblClientID1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRelationship = new javax.swing.JTable();
         btnNext = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
 
         jSplitPane1.setBackground(new java.awt.Color(102, 204, 255));
         jSplitPane1.setDividerSize(0);
@@ -93,12 +123,6 @@ public class DCRelationship extends javax.swing.JPanel {
             }
         });
 
-        txtClientID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtClientIDActionPerformed(evt);
-            }
-        });
-
         lblRelativeName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblRelativeName.setText("Relative's Name:");
 
@@ -126,6 +150,9 @@ public class DCRelationship extends javax.swing.JPanel {
             }
         });
 
+        lblClientID1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClientID1.setText("Client ID:");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -149,9 +176,11 @@ public class DCRelationship extends javax.swing.JPanel {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblClientID)
                             .addComponent(lblCSCD))
-                        .addGap(111, 111, 111)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(138, 138, 138)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblClientID1))
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(164, 164, 164))
             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -169,8 +198,8 @@ public class DCRelationship extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClientID)
-                    .addComponent(txtClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                    .addComponent(lblClientID1))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtRelativeName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRelativeName))
@@ -187,17 +216,14 @@ public class DCRelationship extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtRelationship, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAdd)
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
 
         tblRelationship.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         tblRelationship.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Name", "Relationship", "Age"
@@ -221,14 +247,6 @@ public class DCRelationship extends javax.swing.JPanel {
             }
         });
 
-        btnSave.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -242,8 +260,6 @@ public class DCRelationship extends javax.swing.JPanel {
                 .addContainerGap(151, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSave)
-                .addGap(41, 41, 41)
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(381, 381, 381))
         );
@@ -256,9 +272,7 @@ public class DCRelationship extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
-                    .addComponent(btnNext))
+                .addComponent(btnNext)
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
@@ -306,12 +320,70 @@ public class DCRelationship extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddActionPerformed
+        try{
+            String pattern = "[A-Za-z]+";
+            String pattern2 = "^[0-9]+$";
+            
+            Pattern pat1 = Pattern.compile(pattern);
+            Pattern pat2 = Pattern.compile(pattern2);
+            Matcher match = pat1.matcher(txtRelativeName.getText());
+            Matcher match2 = pat1.matcher(txtRelationship.getText());
+            Matcher match3 = pat2.matcher(txtRelativeAge.getText());
 
-    private void txtClientIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClientIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtClientIDActionPerformed
+            if(!match.matches() || !match2.matches() || !match3.matches()){
+                JOptionPane.showMessageDialog(null, "Please enter valid details");
+            }else{
+                
+                 String rname = txtRelativeName.getText();
+                     String rrelationship = txtRelationship.getText();
+                     String rage = txtRelativeAge.getText();
+                    
+                     String tbdata[] = {rname,rrelationship,rage};
+                     DefaultTableModel model = (DefaultTableModel) tblRelationship.getModel();
+                     
+                     model.addRow(tbdata);
+
+
+                String query = "INSERT into relationship " + " (client_id,name,relationship,age)" + " values (?, ?, ?, ?)";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst = con.prepareStatement(query);
+                pst.setString(1, lblClientID1.getText());
+                pst.setString(2, txtRelativeName.getText());
+                pst.setString(3, txtRelationship.getText());
+                pst.setString(4,txtRelativeAge.getText());
+                pst.executeUpdate();
+                
+//                String query2 = "select * from relationship where client_id=?";
+//                pst2 = con.prepareStatement(query2);
+//                pst2.setString(1, lblClientID1.getText());
+//                rs2 = pst2.executeQuery();
+//                
+//                while(rs2.next()){
+//                     String rname = rs2.getString("name");
+//                     String rrelationship = rs2.getString("relationship");
+//                     String rage = rs2.getString("age");
+//                    
+//                     String tbdata[] = {rname,rrelationship,rage};
+//                     DefaultTableModel model = (DefaultTableModel) tblRelationship.getModel();
+//                     
+//                     model.addRow(tbdata);
+//                     
+//                     
+//                }
+                
+//                DefaultTableModel model = (DefaultTableModel) tblRelationship.getModel();
+//                model.setRowCount(0);
+//                
+//                Object[] row = new Object[4];
+//                row[0] = txtRelativeName.getText();
+//                row[1] = txtRelativeName.getText();
+//                row[2] = txtRelativeName.getText();
+//                model.addRow(row);
+            }
+    }catch(Exception ex){
+     JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
+    }//GEN-LAST:event_btnAddActionPerformed
 
     private void txtRelativeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRelativeNameActionPerformed
         // TODO add your handling code here:
@@ -324,10 +396,6 @@ public class DCRelationship extends javax.swing.JPanel {
     private void txtRelationshipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRelationshipActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRelationshipActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
@@ -369,7 +437,6 @@ public class DCRelationship extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnSave;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -381,11 +448,11 @@ public class DCRelationship extends javax.swing.JPanel {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblCSCD;
     private javax.swing.JLabel lblClientID;
+    private javax.swing.JLabel lblClientID1;
     private javax.swing.JLabel lblRelationship;
     private javax.swing.JLabel lblRelativeAge;
     private javax.swing.JLabel lblRelativeName;
     private javax.swing.JTable tblRelationship;
-    private javax.swing.JTextField txtClientID;
     private javax.swing.JTextField txtRelationship;
     private javax.swing.JTextField txtRelativeAge;
     private javax.swing.JTextField txtRelativeName;
