@@ -22,8 +22,25 @@ public class DCMedicare extends javax.swing.JPanel {
     ResultSet rs = null;
     public DCMedicare() {
         initComponents();
-        
+        fetch();
        
+    }
+    
+     public void fetch(){
+    try{
+        String query = "select * from searchclient order by id desc limit 1;";
+        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst = con.prepareStatement(query);
+        rs = pst.executeQuery();
+        if(rs.next()){
+        String curr_client = rs.getString("client_id");
+        lblClientID1.setText(curr_client);
+        
+        
+        }
+    }catch(Exception ex){
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
     }
 
     /**
