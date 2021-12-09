@@ -89,6 +89,7 @@ public class ARFileClearance extends javax.swing.JPanel {
        // JOptionPane.showMessageDialog(this, "a.fname");
        //  JOptionPane.showMessageDialog(this, "h8");
         llClient2.setText(copy_client);
+       
         }
         
         
@@ -168,6 +169,11 @@ public class ARFileClearance extends javax.swing.JPanel {
         lblFName.setText("MATCHES AN EXISTING");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "YES", "NO" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         lblFName2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblFName2.setText("Do you want to make a new client?");
@@ -180,6 +186,7 @@ public class ARFileClearance extends javax.swing.JPanel {
 
         btnDelete.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.setEnabled(false);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -303,6 +310,12 @@ public class ARFileClearance extends javax.swing.JPanel {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+         final boolean enabled = jComboBox1.getSelectedIndex() == 1;
+            btnDelete.setEnabled(enabled);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     
 //    public static void main(String args[]) {
