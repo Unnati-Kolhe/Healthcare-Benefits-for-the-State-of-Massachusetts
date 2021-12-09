@@ -5,19 +5,52 @@
  */
 package DataCollection.ui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shubhangisrivastava
  */
 public class DcPregnancy extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DcPregnancyy
-     */
+    Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    PreparedStatement pst2 = null;
+    ResultSet rs2 = null;
     public DcPregnancy() {
         initComponents();
+        fetch();
     }
 
+      public void fetch(){
+    try{
+        String query = "select * from searchclient order by id desc limit 1;";
+        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst = con.prepareStatement(query);
+        rs = pst.executeQuery();
+        if(rs.next()){
+        String curr_client = rs.getString("client_id");
+        lblClientID2.setText(curr_client);
+        
+        int id = Integer.parseInt(lblClientID2.getText());
+                 String query2 ="select * from person where client_id=?";
+                 pst2 = con.prepareStatement(query2);
+                 pst2.setInt(1, id);
+                 rs2 = pst2.executeQuery();
+                 if(rs2.next()){
+                    String copy_client = rs2.getString("fname");
+                    lblFName1.setText(copy_client);}
+        }
+    }catch(Exception ex){
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +65,6 @@ public class DcPregnancy extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         lblFName = new javax.swing.JLabel();
-        txtFName = new javax.swing.JTextField();
         lblDocType = new javax.swing.JLabel();
         lblVerify = new javax.swing.JLabel();
         lblCitizen = new javax.swing.JLabel();
@@ -41,8 +73,9 @@ public class DcPregnancy extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         lblClientID1 = new javax.swing.JLabel();
-        txtClientID1 = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        lblClientID2 = new javax.swing.JLabel();
+        lblFName1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -60,7 +93,7 @@ public class DcPregnancy extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -72,12 +105,6 @@ public class DcPregnancy extends javax.swing.JPanel {
 
         lblFName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblFName.setText("Name:");
-
-        txtFName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFNameActionPerformed(evt);
-            }
-        });
 
         lblDocType.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblDocType.setText("Is the mother pregnant for more than 3 months?");
@@ -111,6 +138,12 @@ public class DcPregnancy extends javax.swing.JPanel {
         lblClientID1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblClientID1.setText("Client ID:");
 
+        lblClientID2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClientID2.setText("Client ID:");
+
+        lblFName1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblFName1.setText("Name:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -131,12 +164,12 @@ public class DcPregnancy extends javax.swing.JPanel {
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(282, 282, 282)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(comboIdentity, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtClientID1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(comboVerify, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblClientID2)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(comboIdentity, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(comboVerify, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblFName1))))))
                 .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,12 +184,12 @@ public class DcPregnancy extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClientID1)
-                    .addComponent(txtClientID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                    .addComponent(lblClientID2))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFName)
-                    .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                    .addComponent(lblFName1))
+                .addGap(19, 19, 19)
                 .addComponent(lblDocType)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(comboIdentity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,30 +229,30 @@ public class DcPregnancy extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
+                        .addGap(90, 90, 90)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
                         .addComponent(jLabel2)
                         .addGap(26, 26, 26)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(119, Short.MAX_VALUE))
+                        .addGap(61, 61, 61)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -236,22 +269,34 @@ public class DcPregnancy extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFNameActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+
+ try{
+                SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
+                int id = Integer.parseInt(lblClientID2.getText());
+
+                String query = "INSERT into pregnancy " + " (client_id,fname,pregnant_more_than_3,medical_aid,due_date)" + " values (?, ?, ?, ?, ?)";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst = con.prepareStatement(query);
+                pst.setInt(1, id);    
+                pst.setString(2, lblFName1.getText());
+                pst.setString(3, String.valueOf(comboIdentity.getSelectedItem()));
+                pst.setString(4, String.valueOf(comboVerify.getSelectedItem()));
+                pst.setString(5,Date_Format.format(jDateChooser1.getDate()));
+                pst.executeUpdate();
+            
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         final boolean enabled = jComboBox1.getSelectedIndex() == 0;
-            txtClientID1.setEnabled(enabled);
-            txtFName.setEnabled(enabled);
+            lblClientID2.setEnabled(enabled);
+            lblFName1.setEnabled(enabled);
             comboIdentity.setEnabled(enabled);
             comboVerify.setEnabled(enabled);
-           //jDateChooser1
            
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
@@ -277,10 +322,10 @@ public class DcPregnancy extends javax.swing.JPanel {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblCitizen;
     private javax.swing.JLabel lblClientID1;
+    private javax.swing.JLabel lblClientID2;
     private javax.swing.JLabel lblDocType;
     private javax.swing.JLabel lblFName;
+    private javax.swing.JLabel lblFName1;
     private javax.swing.JLabel lblVerify;
-    private javax.swing.JTextField txtClientID1;
-    private javax.swing.JTextField txtFName;
     // End of variables declaration//GEN-END:variables
 }
