@@ -5,17 +5,51 @@
  */
 package DataCollection.ui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shubhangisrivastava
  */
 public class DCEarnedIncome extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DCEarnedIncomee
-     */
+   Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    PreparedStatement pst2 = null;
+    ResultSet rs2 = null;
     public DCEarnedIncome() {
         initComponents();
+        fetch();
+    }
+    
+    public void fetch(){
+    try{
+        String query = "select * from searchclient order by id desc limit 1;";
+        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst = con.prepareStatement(query);
+        rs = pst.executeQuery();
+        if(rs.next()){
+        String curr_client = rs.getString("client_id");
+        lblClientID2.setText(curr_client);
+        
+        int id = Integer.parseInt(lblClientID2.getText());
+                 String query2 ="select * from person where client_id=?";
+                 pst2 = con.prepareStatement(query2);
+                 pst2.setInt(1, id);
+                 rs2 = pst2.executeQuery();
+                 if(rs2.next()){
+                    String copy_client = rs2.getString("fname");
+                    lblFName1.setText(copy_client);}
+        }
+    }catch(Exception ex){
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
     }
 
     /**
@@ -35,7 +69,6 @@ public class DCEarnedIncome extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         lblFName = new javax.swing.JLabel();
-        txtFName = new javax.swing.JTextField();
         lblEIType = new javax.swing.JLabel();
         lblEAFrequency = new javax.swing.JLabel();
         lblEAIncSource = new javax.swing.JLabel();
@@ -43,18 +76,17 @@ public class DCEarnedIncome extends javax.swing.JPanel {
         comboEAFrequency = new javax.swing.JComboBox<>();
         btnSave = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
-        lblCSCD = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         lblClientID1 = new javax.swing.JLabel();
-        txtClientID1 = new javax.swing.JTextField();
-        txtEAIncSource = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         lblIncStDt = new javax.swing.JLabel();
         DtIncStDt = new com.toedter.calendar.JDateChooser();
         lblIncEndDt = new javax.swing.JLabel();
         DtIncEndDt = new com.toedter.calendar.JDateChooser();
         lblEAIncAmt = new javax.swing.JLabel();
-        txtEAIncAmt = new javax.swing.JTextField();
+        txtEAIncAmt1 = new javax.swing.JTextField();
+        lblClientID2 = new javax.swing.JLabel();
+        lblFName1 = new javax.swing.JLabel();
+        txtEAIncSource = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
 
@@ -71,7 +103,7 @@ public class DCEarnedIncome extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 699, Short.MAX_VALUE)
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -92,13 +124,6 @@ public class DCEarnedIncome extends javax.swing.JPanel {
 
         lblFName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblFName.setText("First Name:");
-
-        txtFName.setEnabled(false);
-        txtFName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFNameActionPerformed(evt);
-            }
-        });
 
         lblEIType.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblEIType.setText("Type:");
@@ -129,20 +154,8 @@ public class DCEarnedIncome extends javax.swing.JPanel {
             }
         });
 
-        lblCSCD.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblCSCD.setText("CSCD:");
-
         lblClientID1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblClientID1.setText("Client ID:");
-
-        txtClientID1.setEnabled(false);
-
-        txtEAIncSource.setEnabled(false);
-        txtEAIncSource.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEAIncSourceActionPerformed(evt);
-            }
-        });
 
         lblIncStDt.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblIncStDt.setText("Income Start Date:");
@@ -153,10 +166,9 @@ public class DCEarnedIncome extends javax.swing.JPanel {
         lblEAIncAmt.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblEAIncAmt.setText("Income Amount");
 
-        txtEAIncAmt.setEnabled(false);
-        txtEAIncAmt.addActionListener(new java.awt.event.ActionListener() {
+        txtEAIncAmt1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEAIncAmtActionPerformed(evt);
+                txtEAIncAmt1ActionPerformed(evt);
             }
         });
 
@@ -174,7 +186,7 @@ public class DCEarnedIncome extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(DtIncEndDt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(DtIncStDt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtEAIncAmt))
+                    .addComponent(txtEAIncAmt1))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -191,65 +203,69 @@ public class DCEarnedIncome extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEAIncAmt)
-                    .addComponent(txtEAIncAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(txtEAIncAmt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        lblClientID2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClientID2.setText("Client ID:");
+
+        lblFName1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblFName1.setText("First Name:");
+
+        txtEAIncSource.setEnabled(false);
+        txtEAIncSource.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEAIncSourceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                    .addComponent(lblEAIncSource)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                                    .addComponent(txtEAIncSource, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblFName)
-                                        .addComponent(lblClientID1)
-                                        .addComponent(lblCSCD)
-                                        .addComponent(lblEIType)
-                                        .addComponent(lblEAFrequency))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtFName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboEIType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboEAFrequency, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtClientID1)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addComponent(btnSave)
-                        .addGap(66, 66, 66)
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addComponent(lblEAIncSource)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtEAIncSource, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblFName)
+                                .addComponent(lblClientID1)
+                                .addComponent(lblEIType)
+                                .addComponent(lblEAFrequency))
+                            .addGap(70, 70, 70)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(comboEIType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboEAFrequency, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblClientID2)
+                                .addComponent(lblFName1))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnSave)
+                        .addGap(49, 49, 49)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)))
+                .addGap(206, 206, 206))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(139, 139, 139)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblCSCD)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClientID1)
-                    .addComponent(txtClientID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblClientID2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFName)
-                    .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFName1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEIType)
@@ -262,13 +278,13 @@ public class DCEarnedIncome extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEAIncSource)
                     .addComponent(txtEAIncSource, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnNext))
-                .addGap(34, 34, 34))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
@@ -286,32 +302,31 @@ public class DCEarnedIncome extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(119, 119, 119)
-                                .addComponent(jLabel2)
-                                .addGap(71, 71, 71)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(144, 144, 144)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(119, 119, 119)
+                .addComponent(jLabel2)
+                .addGap(71, 71, 71)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -342,7 +357,7 @@ public class DCEarnedIncome extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 51, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -361,31 +376,39 @@ public class DCEarnedIncome extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFNameActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSaveActionPerformed
+try{
+                SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
+                int id = Integer.parseInt(lblClientID2.getText());
+
+                String query = "INSERT into earned_income " + " (client_id,fname,income_type,frequency,income_source,start_date,end_date,amount)" + " values (?, ?, ?, ?, ?, ?, ?, ?)";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst = con.prepareStatement(query);
+                pst.setInt(1, id);    
+                pst.setString(2, lblFName1.getText());
+                pst.setString(3, String.valueOf(comboEIType.getSelectedItem()));
+                pst.setString(4, String.valueOf(comboEAFrequency.getSelectedItem()));
+                pst.setString(5, txtEAIncSource.getText());
+                pst.setString(6,Date_Format.format(DtIncStDt.getDate()));
+                pst.setString(7,Date_Format.format(DtIncEndDt.getDate()));
+                pst.setString(8, txtEAIncAmt1.getText());
+                pst.executeUpdate();
+            
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtEAIncSourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEAIncSourceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEAIncSourceActionPerformed
 
-    private void txtEAIncAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEAIncAmtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEAIncAmtActionPerformed
-
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        final boolean enabled = jComboBox1.getSelectedIndex() == 0;
-        txtClientID1.setEnabled(enabled);
-        txtFName.setEnabled(enabled);
+        final boolean enabled = jComboBox1.getSelectedIndex() == 1;
         comboEIType.isEnabled();
         comboEAFrequency.setEnabled(enabled);
         txtEAIncSource.setEnabled(enabled);
-        txtEAIncAmt.setEnabled(enabled);
+        txtEAIncSource.setEnabled(enabled);
         //            jDateChooser2
         //             DtIncStDt
         //                    DtIncEndDt
@@ -397,6 +420,10 @@ public class DCEarnedIncome extends javax.swing.JPanel {
         jSplitPane1.setRightComponent(du);
     }//GEN-LAST:event_btnNextActionPerformed
 
+    private void txtEAIncAmt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEAIncAmt1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEAIncAmt1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser DtIncEndDt;
@@ -406,7 +433,6 @@ public class DCEarnedIncome extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> comboEAFrequency;
     private javax.swing.JComboBox<String> comboEIType;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -416,18 +442,17 @@ public class DCEarnedIncome extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JLabel lblCSCD;
     private javax.swing.JLabel lblClientID1;
+    private javax.swing.JLabel lblClientID2;
     private javax.swing.JLabel lblEAFrequency;
     private javax.swing.JLabel lblEAIncAmt;
     private javax.swing.JLabel lblEAIncSource;
     private javax.swing.JLabel lblEIType;
     private javax.swing.JLabel lblFName;
+    private javax.swing.JLabel lblFName1;
     private javax.swing.JLabel lblIncEndDt;
     private javax.swing.JLabel lblIncStDt;
-    private javax.swing.JTextField txtClientID1;
-    private javax.swing.JTextField txtEAIncAmt;
+    private javax.swing.JTextField txtEAIncAmt1;
     private javax.swing.JTextField txtEAIncSource;
-    private javax.swing.JTextField txtFName;
     // End of variables declaration//GEN-END:variables
 }

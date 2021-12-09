@@ -332,7 +332,7 @@ public class DCMedicare extends javax.swing.JPanel {
        
     
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-       final boolean enabled = jComboBox1.getSelectedIndex() == 0;
+       final boolean enabled = jComboBox1.getSelectedIndex() == 1;
             chkA.setEnabled(enabled);
             chkB.setEnabled(enabled);
             chkBoth.setEnabled(enabled);
