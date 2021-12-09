@@ -329,14 +329,6 @@ public class DCPersonDemographics extends javax.swing.JPanel {
        
          try{
                 SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
-//                 int id = Integer.parseInt(lblClientID2.getText());
-//                 String query2 ="select * from person where client_id=?";
-//                 pst2 = con.prepareStatement(query2);
-//                 pst2.setInt(1, id);
-//                 rs2 = pst2.executeQuery();
-//                 if(rs2.next()){
-//                    String copy_client = rs2.getString("fname");
-//                    lblFName1.setText(copy_client);}
                 int id = Integer.parseInt(lblClientID2.getText());
                 String query = "INSERT into person_demo " + " (client_id,fname,ident_doc_type,verification1,citizenship,person_living_ma,verification2)" + " values (?, ?, ?, ?, ?, ?, ?)";
                 con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");

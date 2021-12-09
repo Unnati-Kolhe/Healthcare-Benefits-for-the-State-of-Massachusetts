@@ -141,29 +141,31 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblClientID" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblDisType" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblDisStDt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblVerify" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="lblVerify1" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblBlindVerify" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblClientID" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="251" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblClientID1" min="-2" max="-2" attributes="0"/>
                                               <Component id="comboBlindVerify" min="-2" pref="170" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtClientID" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
-                                                  <Component id="comboVerify" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="comboDisabilityType" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="DtDisStDt" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                                  <Component id="chkBlind" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="comboVerify" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="comboDisabilityType" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="DtDisStDt" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
-                                              <Component id="chkBlind" min="-2" pref="189" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <Component id="lblDisType" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblDisStDt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblVerify" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -172,12 +174,18 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblClientID" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtClientID" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="lblClientID" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblClientID1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblDisType" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="comboDisabilityType" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -192,10 +200,10 @@
                               <Component id="lblVerify" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="comboVerify" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblVerify1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="chkBlind" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblVerify1" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkBlind" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -220,8 +228,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Client ID:"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtClientID">
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDisType">
                   <Properties>
@@ -285,11 +291,6 @@
                     <Property name="text" type="java.lang.String" value="Blind:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="chkBlind">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Check yes is applicable"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JButton" name="btnSave">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -333,6 +334,19 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblClientID1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Lucida Grande" size="20" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Client ID:"/>
+                  </Properties>
+                </Component>
+                <Component class="java.awt.Checkbox" name="chkBlind">
+                  <Properties>
+                    <Property name="label" type="java.lang.String" value="Check yes is applicable"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

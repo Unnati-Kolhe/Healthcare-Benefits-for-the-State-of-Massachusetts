@@ -7,6 +7,12 @@ package DataCollection.ui;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 
 /**
@@ -15,13 +21,39 @@ import javax.swing.JSpinner;
  */
 public class DCDisability extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DCDisabilityy
-     */
+    Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    PreparedStatement pst2 = null;
+    ResultSet rs2 = null;
     public DCDisability() {
         initComponents();
+        fetch();
+    }
+    
+    public void fetch(){
+    try{
+        String query = "select * from searchclient order by id desc limit 1;";
+        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst = con.prepareStatement(query);
+        rs = pst.executeQuery();
+        if(rs.next()){
+        String curr_client = rs.getString("client_id");
+        lblClientID1.setText(curr_client);
         
-     
+//        int id = Integer.parseInt(lblClientID1.getText());
+//                 String query2 ="select * from person where client_id=?";
+//                 pst2 = con.prepareStatement(query2);
+//                 pst2.setInt(1, id);
+//                 rs2 = pst2.executeQuery();
+//                 if(rs2.next()){
+//                    String copy_client = rs2.getString("fname");
+//                    lblFName1.setText(copy_client);}
+        
+        }
+    }catch(Exception ex){
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
     }
 
     
@@ -39,7 +71,6 @@ public class DCDisability extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         lblClientID = new javax.swing.JLabel();
-        txtClientID = new javax.swing.JTextField();
         lblDisType = new javax.swing.JLabel();
         comboDisabilityType = new javax.swing.JComboBox<>();
         lblDisStDt = new javax.swing.JLabel();
@@ -47,11 +78,12 @@ public class DCDisability extends javax.swing.JPanel {
         lblVerify = new javax.swing.JLabel();
         comboVerify = new javax.swing.JComboBox<>();
         lblVerify1 = new javax.swing.JLabel();
-        chkBlind = new javax.swing.JCheckBox();
         btnSave = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         lblBlindVerify = new javax.swing.JLabel();
         comboBlindVerify = new javax.swing.JComboBox<>();
+        lblClientID1 = new javax.swing.JLabel();
+        chkBlind = new java.awt.Checkbox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -98,8 +130,6 @@ public class DCDisability extends javax.swing.JPanel {
         lblVerify1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblVerify1.setText("Blind:");
 
-        chkBlind.setText("Check yes is applicable");
-
         btnSave.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +151,11 @@ public class DCDisability extends javax.swing.JPanel {
 
         comboBlindVerify.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not Applicable", "Hard Copy", "Pending" }));
 
+        lblClientID1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClientID1.setText("Client ID:");
+
+        chkBlind.setLabel("Check yes is applicable");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -135,24 +170,25 @@ public class DCDisability extends javax.swing.JPanel {
                         .addGap(219, 219, 219))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblClientID)
-                            .addComponent(lblDisType)
-                            .addComponent(lblDisStDt)
-                            .addComponent(lblVerify)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblVerify1)
-                                    .addComponent(lblBlindVerify))
+                                    .addComponent(lblBlindVerify)
+                                    .addComponent(lblClientID))
                                 .addGap(251, 251, 251)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblClientID1)
                                     .addComponent(comboBlindVerify, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboVerify, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(comboDisabilityType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(DtDisStDt, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(chkBlind, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(24, 24, 24))))
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(chkBlind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(comboVerify, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(comboDisabilityType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(DtDisStDt, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(lblDisType)
+                            .addComponent(lblDisStDt)
+                            .addComponent(lblVerify))
+                        .addGap(35, 35, 35))))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnNext, btnSave});
@@ -160,11 +196,15 @@ public class DCDisability extends javax.swing.JPanel {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblClientID)
-                    .addComponent(txtClientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(lblClientID)
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblClientID1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDisType, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboDisabilityType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -176,10 +216,10 @@ public class DCDisability extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVerify)
                     .addComponent(comboVerify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(40, 40, 40)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblVerify1)
-                    .addComponent(chkBlind))
+                    .addComponent(chkBlind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBlindVerify)
@@ -253,7 +293,33 @@ public class DCDisability extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        
+         try{
+                SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
+                int id = Integer.parseInt(lblClientID1.getText());
+                Boolean yes = chkBlind.getState();
+                
+                String query = "INSERT into disability " + " (client_id,disability_type,disability_start_date,verification1,is_blind,verification2)" + " values (?, ?, ?, ?, ?, ?)";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst = con.prepareStatement(query);
+                pst.setInt(1, id);      
+                pst.setString(2, String.valueOf(comboDisabilityType.getSelectedItem()));
+                pst.setString(3,Date_Format.format(DtDisStDt.getDate()));
+                pst.setString(4, String.valueOf(comboVerify.getSelectedItem()));
+                if(yes == true){
+                     pst.setString(5, "Yes");
+                }else{
+                pst.setString(5, "No");
+                }
+                pst.setString(6, String.valueOf(comboBlindVerify.getSelectedItem()));
+                pst.executeUpdate();
+                 
+        
+            
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
@@ -266,7 +332,7 @@ public class DCDisability extends javax.swing.JPanel {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
             final boolean enabled = jComboBox1.getSelectedIndex() == 0;
-            txtClientID.setEnabled(enabled);
+            lblClientID1.setEnabled(enabled);
             comboDisabilityType.setEnabled(enabled);
             DtDisStDt.isEnabled();
 
@@ -285,7 +351,7 @@ public class DCDisability extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser DtDisStDt;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnSave;
-    private javax.swing.JCheckBox chkBlind;
+    private java.awt.Checkbox chkBlind;
     private javax.swing.JComboBox<String> comboBlindVerify;
     private javax.swing.JComboBox<String> comboDisabilityType;
     private javax.swing.JComboBox<String> comboVerify;
@@ -298,10 +364,10 @@ public class DCDisability extends javax.swing.JPanel {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblBlindVerify;
     private javax.swing.JLabel lblClientID;
+    private javax.swing.JLabel lblClientID1;
     private javax.swing.JLabel lblDisStDt;
     private javax.swing.JLabel lblDisType;
     private javax.swing.JLabel lblVerify;
     private javax.swing.JLabel lblVerify1;
-    private javax.swing.JTextField txtClientID;
     // End of variables declaration//GEN-END:variables
 }
