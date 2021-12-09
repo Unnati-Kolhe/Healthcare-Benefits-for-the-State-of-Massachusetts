@@ -5,17 +5,51 @@
  */
 package DataCollection.ui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shubhangisrivastava
  */
 public class DCCwdWwd extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DCCwdWwd
-     */
+     Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    PreparedStatement pst2 = null;
+    ResultSet rs2 = null;
     public DCCwdWwd() {
         initComponents();
+        fetch();
+    }
+    
+      public void fetch(){
+    try{
+        String query = "select * from searchclient order by id desc limit 1;";
+        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst = con.prepareStatement(query);
+        rs = pst.executeQuery();
+        if(rs.next()){
+        String curr_client = rs.getString("client_id");
+        lblClientID2.setText(curr_client);
+        
+        int id = Integer.parseInt(lblClientID2.getText());
+                 String query2 ="select * from person where client_id=?";
+                 pst2 = con.prepareStatement(query2);
+                 pst2.setInt(1, id);
+                 rs2 = pst2.executeQuery();
+                 if(rs2.next()){
+                    String copy_client = rs2.getString("fname");
+                    lblFName1.setText(copy_client);}
+        }
+    }catch(Exception ex){
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
     }
 
     /**
@@ -32,17 +66,15 @@ public class DCCwdWwd extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         lblFName = new javax.swing.JLabel();
-        txtFName = new javax.swing.JTextField();
         lblCWDques = new javax.swing.JLabel();
         lblWWDques = new javax.swing.JLabel();
         comboCWD = new javax.swing.JComboBox<>();
         comboWWD = new javax.swing.JComboBox<>();
         btnSave = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
-        lblCSCD = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         lblClientID1 = new javax.swing.JLabel();
-        txtClientID1 = new javax.swing.JTextField();
+        lblClientID2 = new javax.swing.JLabel();
+        lblFName1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -60,7 +92,7 @@ public class DCCwdWwd extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addGap(0, 489, Short.MAX_VALUE)
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -72,12 +104,6 @@ public class DCCwdWwd extends javax.swing.JPanel {
 
         lblFName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblFName.setText("Name:");
-
-        txtFName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFNameActionPerformed(evt);
-            }
-        });
 
         lblCWDques.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblCWDques.setText("Is the individual requesting Child with Disability(CWD)?:");
@@ -105,66 +131,61 @@ public class DCCwdWwd extends javax.swing.JPanel {
             }
         });
 
-        lblCSCD.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblCSCD.setText("CSCD:");
-
         lblClientID1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblClientID1.setText("Client ID:");
+
+        lblClientID2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClientID2.setText("Client ID:");
+
+        lblFName1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblFName1.setText("First Name:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(81, 81, 81)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblWWDques, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCWDques, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblClientID1, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(lblCSCD)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(comboWWD, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboCWD, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtClientID1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(115, 115, 115))))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addComponent(btnSave)
-                .addGap(75, 75, 75)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(126, 126, 126)
+                        .addComponent(btnSave)
+                        .addGap(75, 75, 75)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblWWDques, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblCWDques, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(lblFName)
+                                    .addGap(311, 311, 311)
+                                    .addComponent(lblFName1)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(lblClientID1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(comboWWD, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboCWD, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblClientID2, javax.swing.GroupLayout.Alignment.LEADING)))))
+                .addGap(82, 82, 82))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnNext, btnSave});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCSCD)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtClientID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblClientID1))
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFName))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblClientID1)
+                    .addComponent(lblClientID2))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFName)
+                    .addComponent(lblFName1))
+                .addGap(19, 19, 19)
                 .addComponent(lblCWDques)
                 .addGap(3, 3, 3)
                 .addComponent(comboCWD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,7 +200,7 @@ public class DCCwdWwd extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnNext))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
@@ -227,7 +248,7 @@ public class DCCwdWwd extends javax.swing.JPanel {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -244,12 +265,25 @@ public class DCCwdWwd extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFNameActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        
+         try{
+                SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
+                int id = Integer.parseInt(lblClientID2.getText());
+
+                String query = "INSERT into cwd " + " (client_id,fname,cwd,wwd)" + " values (?, ?, ?, ?)";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst = con.prepareStatement(query);
+                pst.setInt(1, id);    
+                pst.setString(2, lblFName1.getText());
+                pst.setString(3, String.valueOf(comboCWD.getSelectedItem()));
+                pst.setString(4, String.valueOf(comboWWD.getSelectedItem()));
+                pst.executeUpdate();
+            
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
@@ -261,9 +295,6 @@ public class DCCwdWwd extends javax.swing.JPanel {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         final boolean enabled = jComboBox1.getSelectedIndex() == 0;
-        //jDateChooser2   
-        txtClientID1.setEnabled(enabled);
-            txtFName.setEnabled(enabled);
             comboCWD.setEnabled(enabled);
             comboWWD.setEnabled(enabled);
             
@@ -277,19 +308,17 @@ public class DCCwdWwd extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> comboCWD;
     private javax.swing.JComboBox<String> comboWWD;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JLabel lblCSCD;
     private javax.swing.JLabel lblCWDques;
     private javax.swing.JLabel lblClientID1;
+    private javax.swing.JLabel lblClientID2;
     private javax.swing.JLabel lblFName;
+    private javax.swing.JLabel lblFName1;
     private javax.swing.JLabel lblWWDques;
-    private javax.swing.JTextField txtClientID1;
-    private javax.swing.JTextField txtFName;
     // End of variables declaration//GEN-END:variables
 }
