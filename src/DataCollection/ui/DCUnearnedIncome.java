@@ -5,17 +5,51 @@
  */
 package DataCollection.ui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shubhangisrivastava
  */
 public class DCUnearnedIncome extends javax.swing.JPanel {
 
-    /**
-     * Creates new form UnearnedIncome
-     */
+     Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    PreparedStatement pst2 = null;
+    ResultSet rs2 = null;
     public DCUnearnedIncome() {
         initComponents();
+        fetch();
+    }
+    
+     public void fetch(){
+    try{
+        String query = "select * from searchclient order by id desc limit 1;";
+        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst = con.prepareStatement(query);
+        rs = pst.executeQuery();
+        if(rs.next()){
+        String curr_client = rs.getString("client_id");
+        lblClientID2.setText(curr_client);
+        
+        int id = Integer.parseInt(lblClientID2.getText());
+                 String query2 ="select * from person where client_id=?";
+                 pst2 = con.prepareStatement(query2);
+                 pst2.setInt(1, id);
+                 rs2 = pst2.executeQuery();
+                 if(rs2.next()){
+                    String copy_client = rs2.getString("fname");
+                    lblFName1.setText(copy_client);}
+        }
+    }catch(Exception ex){
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
     }
 
     /**
@@ -35,7 +69,6 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         lblFName = new javax.swing.JLabel();
-        txtFName = new javax.swing.JTextField();
         lblUEType = new javax.swing.JLabel();
         lblUEFreq = new javax.swing.JLabel();
         lblUEIncSource = new javax.swing.JLabel();
@@ -43,10 +76,7 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
         comboUEFreq = new javax.swing.JComboBox<>();
         btnSave = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
-        lblCSCD = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         lblClientID1 = new javax.swing.JLabel();
-        txtClientID1 = new javax.swing.JTextField();
         txtUEIncSource = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         lblUEStDt = new javax.swing.JLabel();
@@ -55,6 +85,8 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
         DtUIEndDt = new com.toedter.calendar.JDateChooser();
         lblUIIncAmt = new javax.swing.JLabel();
         txtUIIncAmt = new javax.swing.JTextField();
+        lblClientID2 = new javax.swing.JLabel();
+        lblFName1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
 
@@ -75,7 +107,7 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 292, Short.MAX_VALUE)
+            .addGap(0, 722, Short.MAX_VALUE)
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -93,13 +125,6 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
 
         lblFName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblFName.setText("First Name:");
-
-        txtFName.setEnabled(false);
-        txtFName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFNameActionPerformed(evt);
-            }
-        });
 
         lblUEType.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblUEType.setText("Type:");
@@ -125,13 +150,8 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
         btnNext.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         btnNext.setText("Next");
 
-        lblCSCD.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblCSCD.setText("CSCD:");
-
         lblClientID1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblClientID1.setText("Client ID:");
-
-        txtClientID1.setEnabled(false);
 
         txtUEIncSource.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,62 +209,62 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
+        lblClientID2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClientID2.setText("Client ID:");
+
+        lblFName1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblFName1.setText("First Name:");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(129, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                    .addComponent(lblUEIncSource)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                                    .addComponent(txtUEIncSource, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblFName)
-                                        .addComponent(lblClientID1)
-                                        .addComponent(lblCSCD)
-                                        .addComponent(lblUEType)
-                                        .addComponent(lblUEFreq))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtFName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboUEType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboUEFreq, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtClientID1)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addComponent(btnSave)
-                        .addGap(66, 66, 66)
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 152, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                        .addComponent(lblUEIncSource)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                        .addComponent(txtUEIncSource, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblUEType)
+                                            .addComponent(lblUEFreq)
+                                            .addComponent(lblClientID1)
+                                            .addComponent(lblFName))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(comboUEType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(comboUEFreq, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(lblClientID2)
+                                            .addComponent(lblFName1)))))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(btnSave)
+                                .addGap(66, 66, 66)
+                                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(113, 113, 113))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblCSCD)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblClientID2)
+                    .addComponent(lblClientID1))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFName1)
+                    .addComponent(lblFName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClientID1)
-                    .addComponent(txtClientID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFName)
-                    .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUEType)
                     .addComponent(comboUEType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -262,7 +282,7 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnNext))
-                .addGap(34, 34, 34))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
@@ -343,12 +363,29 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFNameActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+
+        try{
+                SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
+                int id = Integer.parseInt(lblClientID2.getText());
+
+                String query = "INSERT into unearned_income " + " (client_id,fname,income_type,frequency,income_source,start_date,end_date,amount)" + " values (?, ?, ?, ?, ?, ?, ?, ?)";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst = con.prepareStatement(query);
+                pst.setInt(1, id);    
+                pst.setString(2, lblFName1.getText());
+                pst.setString(3, String.valueOf(comboUEType.getSelectedItem()));
+                pst.setString(4, String.valueOf(comboUEFreq.getSelectedItem()));
+                pst.setString(5, txtUEIncSource.getText());
+                pst.setString(6,Date_Format.format(DtUIStDt.getDate()));
+                pst.setString(7,Date_Format.format(DtUIEndDt.getDate()));
+                pst.setString(8, txtUIIncAmt.getText());
+                pst.executeUpdate();
+            
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        } 
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtUEIncSourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUEIncSourceActionPerformed
@@ -362,15 +399,10 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         final boolean enabled = jComboBox1.getSelectedIndex() == 0;
-        txtClientID1.setEnabled(enabled);
-        txtFName.setEnabled(enabled);
         comboUEType.isEnabled();
         comboUEFreq.setEnabled(enabled);
         txtUEIncSource.setEnabled(enabled);
         txtUIIncAmt.setEnabled(enabled);
-        //            jDateChooser2
-        //             DtIncStDt
-        //             DtIncEndDt
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
@@ -382,7 +414,6 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> comboUEFreq;
     private javax.swing.JComboBox<String> comboUEType;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -392,17 +423,16 @@ public class DCUnearnedIncome extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JLabel lblCSCD;
     private javax.swing.JLabel lblClientID1;
+    private javax.swing.JLabel lblClientID2;
     private javax.swing.JLabel lblFName;
+    private javax.swing.JLabel lblFName1;
     private javax.swing.JLabel lblUEFreq;
     private javax.swing.JLabel lblUEIncSource;
     private javax.swing.JLabel lblUEStDt;
     private javax.swing.JLabel lblUEType;
     private javax.swing.JLabel lblUIEndDt;
     private javax.swing.JLabel lblUIIncAmt;
-    private javax.swing.JTextField txtClientID1;
-    private javax.swing.JTextField txtFName;
     private javax.swing.JTextField txtUEIncSource;
     private javax.swing.JTextField txtUIIncAmt;
     // End of variables declaration//GEN-END:variables
