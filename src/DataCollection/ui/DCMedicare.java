@@ -5,15 +5,21 @@
  */
 package DataCollection.ui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shubhangisrivastava
  */
 public class DCMedicare extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DCMedicare
-     */
+    Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
     public DCMedicare() {
         initComponents();
         
@@ -259,9 +265,25 @@ public class DCMedicare extends javax.swing.JPanel {
     }//GEN-LAST:event_txtFNameActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+         try{
+        if(!chkMedA.isSelected() && !chkMedB.isSelected() && !chkMedBoth.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Please check atleast one checkbox");
+        } else {
+                String query = "INSERT into medicare " + " (client_id,fname,medA,medB,medBoth)" + " values (?, ?, ?, ?, ?)";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst = con.prepareStatement(query);
+                pst.setString(1, txtClientID1.getText());
+                pst.setString(2, txtFName.getText());
+                pst.setString(3, chkMedA.getText());
+                pst.setString(4, chkMedB.getText());
+                pst.setString(5, chkMedBoth.getText());
+                pst.executeUpdate();
+        } 
     }//GEN-LAST:event_btnSaveActionPerformed
-
+catch(Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
     private void chkMedAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMedAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkMedAActionPerformed
