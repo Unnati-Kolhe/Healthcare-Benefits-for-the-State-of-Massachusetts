@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,16 +18,18 @@ import javax.swing.JOptionPane;
  */
 public class DCMedicare extends javax.swing.JPanel {
 
-    Connection con = null;
+     Connection con = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
+    PreparedStatement pst2 = null;
+    ResultSet rs2 = null;
     public DCMedicare() {
         initComponents();
         fetch();
        
     }
     
-     public void fetch(){
+    public void fetch(){
     try{
         String query = "select * from searchclient order by id desc limit 1;";
         con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
@@ -34,15 +37,21 @@ public class DCMedicare extends javax.swing.JPanel {
         rs = pst.executeQuery();
         if(rs.next()){
         String curr_client = rs.getString("client_id");
-        lblClientID1.setText(curr_client);
+        lblClientID2.setText(curr_client);
         
-        
+        int id = Integer.parseInt(lblClientID2.getText());
+                 String query2 ="select * from person where client_id=?";
+                 pst2 = con.prepareStatement(query2);
+                 pst2.setInt(1, id);
+                 rs2 = pst2.executeQuery();
+                 if(rs2.next()){
+                    String copy_client = rs2.getString("fname");
+                    lblFName1.setText(copy_client);}
         }
     }catch(Exception ex){
     JOptionPane.showMessageDialog(this, ex.getMessage());
     }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,18 +66,18 @@ public class DCMedicare extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         lblFName = new javax.swing.JLabel();
-        txtFName = new javax.swing.JTextField();
         lblDocType = new javax.swing.JLabel();
         lblMedA = new javax.swing.JLabel();
         lblMedB = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         lblClientID1 = new javax.swing.JLabel();
-        txtClientID1 = new javax.swing.JTextField();
         lblBoth = new javax.swing.JLabel();
-        chkMedA = new javax.swing.JCheckBox();
-        chkMedB = new javax.swing.JCheckBox();
-        chkMedBoth = new javax.swing.JCheckBox();
+        chkA = new java.awt.Checkbox();
+        chkB = new java.awt.Checkbox();
+        chkBoth = new java.awt.Checkbox();
+        lblClientID2 = new javax.swing.JLabel();
+        lblFName1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -86,7 +95,7 @@ public class DCMedicare extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
+            .addGap(0, 515, Short.MAX_VALUE)
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -98,12 +107,6 @@ public class DCMedicare extends javax.swing.JPanel {
 
         lblFName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblFName.setText("Name:");
-
-        txtFName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFNameActionPerformed(evt);
-            }
-        });
 
         lblDocType.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblDocType.setText("Individual is requesting which of the following?:");
@@ -136,47 +139,55 @@ public class DCMedicare extends javax.swing.JPanel {
         lblBoth.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblBoth.setText("Both:");
 
-        chkMedA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkMedAActionPerformed(evt);
-            }
-        });
+        chkA.setLabel("check yes if applicable");
+
+        chkB.setLabel("check yes if applicable");
+
+        chkBoth.setLabel("check yes if applicable");
+
+        lblClientID2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClientID2.setText("Client ID:");
+
+        lblFName1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblFName1.setText("Name:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(173, 173, 173)
+                .addComponent(btnSave)
+                .addGap(74, 74, 74)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDocType)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFName)
-                                    .addComponent(lblClientID1)
-                                    .addComponent(lblMedA)
-                                    .addComponent(lblMedB)
-                                    .addComponent(lblBoth))
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(239, 239, 239)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chkMedB)
-                                            .addComponent(chkMedA)
-                                            .addComponent(chkMedBoth)))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(139, 139, 139)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtClientID1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addComponent(lblClientID2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblClientID1)
+                        .addGap(127, 127, 127))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(btnSave)
-                        .addGap(74, 74, 74)
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMedA)
+                            .addComponent(lblMedB)
+                            .addComponent(lblBoth))
+                        .addGap(146, 146, 146)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(chkB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkBoth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(62, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblFName)
+                                .addGap(255, 255, 255)
+                                .addComponent(lblFName1))
+                            .addComponent(lblDocType))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnNext, btnSave});
@@ -185,27 +196,34 @@ public class DCMedicare extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblClientID1)
+                    .addComponent(lblClientID2))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtClientID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblClientID1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFName))
-                .addGap(18, 18, 18)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(lblFName))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblFName1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblDocType)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMedA)
-                    .addComponent(chkMedA, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMedB)
-                    .addComponent(chkMedB))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBoth)
-                    .addComponent(chkMedBoth))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblMedA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblMedB)
+                        .addGap(9, 9, 9)
+                        .addComponent(lblBoth))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(chkA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37))
+                            .addComponent(chkB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
+                        .addComponent(chkBoth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
@@ -237,15 +255,12 @@ public class DCMedicare extends javax.swing.JPanel {
                         .addGap(39, 39, 39)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jLabel2)
-                                .addGap(46, 46, 46)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(92, Short.MAX_VALUE))
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel2)
+                        .addGap(46, 46, 46)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,8 +272,8 @@ public class DCMedicare extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -277,41 +292,50 @@ public class DCMedicare extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFNameActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-         try{
-        if(!chkMedA.isSelected() && !chkMedB.isSelected() && !chkMedBoth.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Please check atleast one checkbox");
-        } else {
-                String query = "INSERT into medicare " + " (client_id,fname,medA,medB,medBoth)" + " values (?, ?, ?, ?, ?)";
+        
+        try{
+                SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
+                int id = Integer.parseInt(lblClientID2.getText());
+                Boolean yes = chkA.getState();
+                Boolean yes2 = chkB.getState();
+                Boolean yes3 = chkBoth.getState();
+
+                String query = "INSERT into medicare " + " (client_id,fname,medicare_a,medicare_b,medicare_both)" + " values (?, ?, ?, ?, ?)";
                 con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
                 pst = con.prepareStatement(query);
-                pst.setString(1, txtClientID1.getText());
-                pst.setString(2, txtFName.getText());
-                pst.setString(3, chkMedA.getText());
-                pst.setString(4, chkMedB.getText());
-                pst.setString(5, chkMedBoth.getText());
+                pst.setInt(1, id);    
+                pst.setString(2, lblFName1.getText());
+                 if(yes == true){
+                     pst.setString(3, "Yes");
+                }else{
+                pst.setString(3, "No");
+                }
+                 if(yes2 == true){
+                     pst.setString(4, "Yes");
+                }else{
+                pst.setString(4, "No");
+                }
+                 if(yes3 == true){
+                     pst.setString(5, "Yes");
+                }else{
+                pst.setString(5, "No");
+                }
                 pst.executeUpdate();
-        } 
-    }//GEN-LAST:event_btnSaveActionPerformed
-catch(Exception ex) {
+            
+        } catch(Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-    }
-    private void chkMedAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMedAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkMedAActionPerformed
+        
+    }//GEN-LAST:event_btnSaveActionPerformed
 
+       
+    
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
        final boolean enabled = jComboBox1.getSelectedIndex() == 0;
-            txtClientID1.setEnabled(enabled);
-            txtFName.setEnabled(enabled);
-            chkMedA.setEnabled(enabled);
-            chkMedB.setEnabled(enabled);
-            chkMedBoth.setEnabled(enabled);
+            chkA.setEnabled(enabled);
+            chkB.setEnabled(enabled);
+            chkBoth.setEnabled(enabled);
            
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -326,9 +350,9 @@ catch(Exception ex) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnSave;
-    private javax.swing.JCheckBox chkMedA;
-    private javax.swing.JCheckBox chkMedB;
-    private javax.swing.JCheckBox chkMedBoth;
+    private java.awt.Checkbox chkA;
+    private java.awt.Checkbox chkB;
+    private java.awt.Checkbox chkBoth;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -338,11 +362,11 @@ catch(Exception ex) {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblBoth;
     private javax.swing.JLabel lblClientID1;
+    private javax.swing.JLabel lblClientID2;
     private javax.swing.JLabel lblDocType;
     private javax.swing.JLabel lblFName;
+    private javax.swing.JLabel lblFName1;
     private javax.swing.JLabel lblMedA;
     private javax.swing.JLabel lblMedB;
-    private javax.swing.JTextField txtClientID1;
-    private javax.swing.JTextField txtFName;
     // End of variables declaration//GEN-END:variables
 }
