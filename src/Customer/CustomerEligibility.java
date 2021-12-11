@@ -8,6 +8,10 @@ package Customer;
 import ApplicationRegistration.ui.NewJFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,11 +20,16 @@ import javax.swing.JOptionPane;
  */
 public class CustomerEligibility extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CustomerEligibility
-     */
+    Connection con = null;
+    PreparedStatement pst = null;
+    PreparedStatement pst2 = null;
+    ResultSet rs = null;
+    ResultSet rs2 = null;
     public CustomerEligibility() {
         initComponents();
+        fetch();
+        
+        
         
         btnLogout.addActionListener(new ActionListener(){
             
@@ -43,6 +52,39 @@ public class CustomerEligibility extends javax.swing.JPanel {
 //               // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //            }
         });
+    }
+    
+    public void fetch(){
+    try{
+        String query = "select * from customer_credd order by client_id desc limit 1;";
+        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst = con.prepareStatement(query);
+        rs = pst.executeQuery();
+        if(rs.next()){
+        String curr_client_id = rs.getString("client_id");
+        lblclient.setText(curr_client_id);
+        }
+       // JOptionPane.showMessageDialog(this, "h1");
+       
+        String query2 = "select * from eligibility where client_id=?";
+        pst2 = con.prepareStatement(query2);
+        pst2.setString(1, lblclient.getText());
+        rs2 = pst2.executeQuery();
+        if(rs2.next()){
+        String elig = rs2.getString("elig");
+        lblBenefit.setText(elig);
+        String days_left = rs2.getString("days_left");
+        lblLeft.setText(days_left);
+        String status = rs2.getString("status");
+        lblStatus.setText(status);
+        String el_start_date = rs2.getString("start_date");
+        lblStart.setText(el_start_date);
+        String el_end_date = rs2.getString("end_date");
+        lblEnd.setText(el_end_date);
+        }
+    }catch(Exception ex){
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
     }
 
     /**
@@ -198,6 +240,11 @@ public class CustomerEligibility extends javax.swing.JPanel {
         jLabel1.setText("Your Eligibility");
 
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -207,7 +254,7 @@ public class CustomerEligibility extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -244,6 +291,10 @@ public class CustomerEligibility extends javax.swing.JPanel {
             .addComponent(jSplitPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

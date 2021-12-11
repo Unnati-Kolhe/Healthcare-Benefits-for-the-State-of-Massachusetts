@@ -65,7 +65,7 @@ public class CustomerSign extends javax.swing.JPanel {
         jLabel1.setText("Client Log-in");
 
         lblCSCD.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblCSCD.setText("First Name:");
+        lblCSCD.setText("Client Id:");
 
         lblCSCD1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblCSCD1.setText("SSN:");

@@ -26,8 +26,10 @@ public class ARFileClearance extends javax.swing.JPanel {
     PreparedStatement pst = null;
     PreparedStatement pst2 = null;
      PreparedStatement pst3 = null;
+     PreparedStatement pst4 = null;
     ResultSet rs = null;
     ResultSet rs2 = null;
+    ResultSet rs3 = null;
     public ARFileClearance() {
         initComponents();
         fetch();
@@ -301,6 +303,10 @@ public class ARFileClearance extends javax.swing.JPanel {
         String query3 = "delete from person order by client_id desc limit 1;";
         pst3 = con.prepareStatement(query3);
         pst3.executeUpdate(query3);
+        
+        String query4 = "delete from customer_credd order by client_id desc limit 1;";
+        pst4 = con.prepareStatement(query4);
+        pst4.executeUpdate(query4);
          }catch(Exception ex){
     JOptionPane.showMessageDialog(this, ex.getMessage());
     }
