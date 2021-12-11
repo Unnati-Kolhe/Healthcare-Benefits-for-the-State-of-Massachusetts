@@ -41,16 +41,11 @@ public class AuthorizationNotice extends javax.swing.JPanel {
         String curr_client_id = rs.getString("client_id");
         jLabel6.setText(curr_client_id);
         }
-       // JOptionPane.showMessageDialog(this, "h1");
        
        String query2 = "select * from eligibility e join person p on p.client_id=e.client_id where e.client_id=? and days_left=90;";
-        //JOptionPane.showMessageDialog(this, "h2");
         pst2 = con.prepareStatement(query2);
-       //  JOptionPane.showMessageDialog(this, "h3");
         pst2.setString(1, jLabel6.getText());
-        // JOptionPane.showMessageDialog(this, "h4");
         rs2 = pst2.executeQuery();
-        // JOptionPane.showMessageDialog(this, "h5");
         if(rs2.next()== true){
             jLabel1.setText("Client Authorization Notice For ");
         }else{

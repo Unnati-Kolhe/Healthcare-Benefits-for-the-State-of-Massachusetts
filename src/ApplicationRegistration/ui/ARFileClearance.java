@@ -140,7 +140,6 @@ public class ARFileClearance extends javax.swing.JPanel {
         lblFName2 = new javax.swing.JLabel();
         llClient2 = new javax.swing.JLabel();
         lblClient1 = new javax.swing.JLabel();
-        btnDelete = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -186,15 +185,6 @@ public class ARFileClearance extends javax.swing.JPanel {
         lblClient1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblClient1.setText("CLIENT1");
 
-        btnDelete.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
-        btnDelete.setText("Delete");
-        btnDelete.setEnabled(false);
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
         btnLogout.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -208,27 +198,20 @@ public class ARFileClearance extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblFName2)
-                        .addGap(34, 34, 34))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
                         .addComponent(lblClient1)
                         .addGap(58, 58, 58)
-                        .addComponent(lblFName)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(llClient2)))
-                .addGap(200, 200, 200))
+                        .addComponent(lblFName))
+                    .addComponent(lblFName2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(llClient2)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(141, 141, 141))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(btnDelete)
-                .addGap(41, 41, 41)
+                .addGap(262, 262, 262)
                 .addComponent(btnLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -241,14 +224,12 @@ public class ARFileClearance extends javax.swing.JPanel {
                     .addComponent(llClient2)
                     .addComponent(lblClient1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFName2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDelete)
-                    .addComponent(btnLogout))
-                .addGap(26, 26, 26))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFName2))
+                .addGap(38, 38, 38)
+                .addComponent(btnLogout)
+                .addGap(28, 28, 28))
         );
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
@@ -262,21 +243,18 @@ public class ARFileClearance extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(343, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
-                        .addGap(51, 51, 51))))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(37, 37, 37)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -297,21 +275,19 @@ public class ARFileClearance extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-       try{
-        String query3 = "delete from person order by client_id desc limit 1;";
-        pst3 = con.prepareStatement(query3);
-        pst3.executeUpdate(query3);
-        
-        String query4 = "delete from customer_credd order by client_id desc limit 1;";
-        pst4 = con.prepareStatement(query4);
-        pst4.executeUpdate(query4);
-         }catch(Exception ex){
-    JOptionPane.showMessageDialog(this, ex.getMessage());
-    }
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
+//
+//    try{
+//        String query3 = "delete from person order by client_id desc limit 1;";
+//        pst3 = con.prepareStatement(query3);
+//        pst3.executeUpdate(query3);
+//        
+//        String query4 = "delete from customer_credd order by client_id desc limit 1;";
+//        pst4 = con.prepareStatement(query4);
+//        pst4.executeUpdate(query4);
+//         }catch(Exception ex){
+//    JOptionPane.showMessageDialog(this, ex.getMessage());
+//    }
+    
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
         
@@ -320,7 +296,7 @@ public class ARFileClearance extends javax.swing.JPanel {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
          final boolean enabled = jComboBox1.getSelectedIndex() == 1;
-            btnDelete.setEnabled(enabled);
+          //  btnDelete.setEnabled(enabled);
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     
@@ -358,7 +334,6 @@ public class ARFileClearance extends javax.swing.JPanel {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLogout;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
