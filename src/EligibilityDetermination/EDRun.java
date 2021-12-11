@@ -33,8 +33,16 @@ public class EDRun extends javax.swing.JPanel {
     ResultSet rs = null;
     PreparedStatement pst2 = null;
     ResultSet rs2 = null;
-        PreparedStatement pst3 = null;
+    PreparedStatement pst3 = null;
     ResultSet rs3 = null;
+    PreparedStatement pst4 = null;
+    ResultSet rs4 = null;
+    PreparedStatement pst5 = null;
+    ResultSet rs5 = null;
+    PreparedStatement pst6 = null;
+    ResultSet rs6 = null;
+    PreparedStatement pst7 = null;
+    ResultSet rs7 = null;
     public EDRun() {
         initComponents();
         fetch();
@@ -239,7 +247,7 @@ public class EDRun extends javax.swing.JPanel {
                 LocalDateTime now = LocalDateTime.now();
                  SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
                 int id = Integer.parseInt(lblClientID1.getText());
-                String aca = " select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p inner join living_arrangement lm on p.client_id = lm.client_id inner join person_demo pd on p.client_id = pd.client_id WHERE NOT EXISTS(select * from medicare where medicare.client_id = p.client_id) AND NOT EXISTS(select * from disability where disability.client_id = p.client_id) AND NOT EXISTS(select * from pregnancy where pregnancy.client_id = p.client_id) AND NOT EXISTS(select * from cwd where cwd.client_id = p.client_id) AND NOT EXISTS(select * from earned_income where earned_income.client_id = p.client_id) AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id)having age> 17 and p.client_id=?";
+                String aca = "select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p inner join living_arrangement lm on p.client_id = lm.client_id inner join person_demo pd on p.client_id = pd.client_id WHERE NOT EXISTS(select * from medicare where medicare.client_id = p.client_id) AND NOT EXISTS(select * from disability where disability.client_id = p.client_id) AND NOT EXISTS(select * from pregnancy where pregnancy.client_id = p.client_id) AND NOT EXISTS(select * from cwd where cwd.client_id = p.client_id) AND NOT EXISTS(select * from earned_income where earned_income.client_id = p.client_id) AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id)having age> 17 and p.client_id=?";
                 String rel = "select * from relationship where client_id=?";
                 con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
                 pst = con.prepareStatement(aca);
@@ -292,6 +300,112 @@ public class EDRun extends javax.swing.JPanel {
                 pst3.executeUpdate();
                     }
                 }
+                
+            String aca2 = "select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p inner join living_arrangement lm on p.client_id = lm.client_id  inner join person_demo pd on p.client_id = pd.client_id  inner join disability d on p.client_id = d.client_id  WHERE NOT EXISTS(select * from medicare where medicare.client_id = p.client_id) AND NOT EXISTS(select * from pregnancy where pregnancy.client_id = p.client_id) AND NOT EXISTS(select * from cwd where cwd.client_id = p.client_id) AND NOT EXISTS(select * from earned_income where earned_income.client_id = p.client_id)  AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id) having age > 18  and d.is_blind ='Yes' and p.client_id=?";
+            String rel2 = "select * from relationship where client_id=?";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst4 = con.prepareStatement(aca2);
+                pst5 = con.prepareStatement(rel2);
+                pst4.setInt(1, id);  
+                pst5.setInt(1, id);  
+                rs3 =pst4.executeQuery();
+                rs4 =pst5.executeQuery();
+                if(rs3.next() == true){
+                    if(rs4.next() == true){
+                         elig = "ABD Blind";
+                         income = "$1000";
+                         client_id = id;
+                         Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+                calendar.setTime(start_date);
+                calendar.add(Calendar.DATE, 90);
+                end_date = calendar.getTime();
+                         status="Eligible";
+                         
+                String eligi = "INSERT into eligibility " + " (client_id,elig,income,start_date,end_date,status)" + " values (?, ?, ?, ?, ?, ?)";
+                pst3 = con.prepareStatement(eligi);
+                pst3.setInt(1, client_id);
+                pst3.setString(2, elig);
+                pst3.setString(3, income);
+                pst3.setString(4,Date_Format.format(start_date));
+                pst3.setString(5,Date_Format.format(end_date));
+                //pst3.setInt(6, 1);
+                pst3.setString(6, status);
+                pst3.executeUpdate();
+                         
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(this, "hiiii");
+                    elig = "ABD Blind";
+                         income = "$800";
+                         client_id = id;
+                           Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+                calendar.setTime(start_date);
+                calendar.add(Calendar.DATE, 90);
+                end_date = calendar.getTime();
+                         status="Eligible";
+                          String eligi = "INSERT into eligibility " + " (client_id,elig,income,start_date,end_date,status)" + " values (?, ?, ?, ?, ?, ?)";
+                pst3 = con.prepareStatement(eligi);
+                pst3.setInt(1, client_id);
+                pst3.setString(2, elig);
+                pst3.setString(3, income);
+                pst3.setString(4,Date_Format.format(start_date));
+                pst3.setString(5,Date_Format.format(end_date));
+                pst3.setString(6, status);
+                pst3.executeUpdate();
+                    }
+                }
+                
+             String aca3 = "select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p inner join living_arrangement lm on p.client_id = lm.client_id  inner join person_demo pd on p.client_id = pd.client_id  inner join disability d on p.client_id = d.client_id  WHERE NOT EXISTS(select * from medicare where medicare.client_id = p.client_id) AND NOT EXISTS(select * from pregnancy where pregnancy.client_id = p.client_id) AND NOT EXISTS(select * from cwd where cwd.client_id = p.client_id) AND NOT EXISTS(select * from earned_income where earned_income.client_id = p.client_id)  AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id) having age > 18  and d.is_blind ='No' and p.client_id=?";
+            String rel3 = "select * from relationship where client_id=?";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst6 = con.prepareStatement(aca3);
+                pst7 = con.prepareStatement(rel3);
+                pst6.setInt(1, id);  
+                pst7.setInt(1, id);  
+                rs5 =pst6.executeQuery();
+                rs6 =pst7.executeQuery();
+                if(rs5.next() == true){
+                    if(rs6.next() == true){
+                         elig = "ABD";
+                         income = "$1000";
+                         client_id = id;
+                         Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+                calendar.setTime(start_date);
+                calendar.add(Calendar.DATE, 90);
+                end_date = calendar.getTime();
+                         status="Eligible";
+                         
+                String eligi = "INSERT into eligibility " + " (client_id,elig,income,start_date,end_date,status)" + " values (?, ?, ?, ?, ?, ?)";
+                pst3 = con.prepareStatement(eligi);
+                pst3.setInt(1, client_id);
+                pst3.setString(2, elig);
+                pst3.setString(3, income);
+                pst3.setString(4,Date_Format.format(start_date));
+                pst3.setString(5,Date_Format.format(end_date));
+                //pst3.setInt(6, 1);
+                pst3.setString(6, status);
+                pst3.executeUpdate();
+                         
+                    }else{
+                        JOptionPane.showMessageDialog(this, "hiiii");
+                    elig = "ABD";
+                         income = "$800";
+                         client_id = id;
+                           Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+                calendar.setTime(start_date);
+                calendar.add(Calendar.DATE, 90);
+                end_date = calendar.getTime();
+                         status="Eligible";
+                          String eligi = "INSERT into eligibility " + " (client_id,elig,income,start_date,end_date,status)" + " values (?, ?, ?, ?, ?, ?)";
+                pst3 = con.prepareStatement(eligi);
+                pst3.setInt(1, client_id);
+                pst3.setString(2, elig);
+                pst3.setString(3, income);
+                pst3.setString(4,Date_Format.format(start_date));
+                pst3.setString(5,Date_Format.format(end_date));
+                pst3.setString(6, status);
+                pst3.executeUpdate();
+                    }}
         } catch(Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
