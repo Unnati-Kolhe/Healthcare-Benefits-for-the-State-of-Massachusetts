@@ -43,6 +43,13 @@ public class EDRun extends javax.swing.JPanel {
     ResultSet rs6 = null;
     PreparedStatement pst7 = null;
     ResultSet rs7 = null;
+     PreparedStatement pst8 = null;
+    ResultSet rs8 = null;
+    PreparedStatement pst9 = null;
+    ResultSet rs9 = null;
+    PreparedStatement pst10 = null;
+    ResultSet rs10 = null;
+    
     public EDRun() {
         initComponents();
         fetch();
@@ -243,6 +250,7 @@ public class EDRun extends javax.swing.JPanel {
                 int days_left;
                 String status;
                 
+                //code for aca starts here
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
                 LocalDateTime now = LocalDateTime.now();
                  SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
@@ -300,7 +308,8 @@ public class EDRun extends javax.swing.JPanel {
                 pst3.executeUpdate();
                     }
                 }
-                
+             
+                //code for abd blind check yes starts here
             String aca2 = "select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p inner join living_arrangement lm on p.client_id = lm.client_id  inner join person_demo pd on p.client_id = pd.client_id  inner join disability d on p.client_id = d.client_id  WHERE NOT EXISTS(select * from medicare where medicare.client_id = p.client_id) AND NOT EXISTS(select * from pregnancy where pregnancy.client_id = p.client_id) AND NOT EXISTS(select * from cwd where cwd.client_id = p.client_id) AND NOT EXISTS(select * from earned_income where earned_income.client_id = p.client_id)  AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id) having age > 18  and d.is_blind ='Yes' and p.client_id=?";
             String rel2 = "select * from relationship where client_id=?";
                 con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
@@ -354,7 +363,8 @@ public class EDRun extends javax.swing.JPanel {
                 pst3.executeUpdate();
                     }
                 }
-                
+              
+                //code for abd no blind starts here
              String aca3 = "select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p inner join living_arrangement lm on p.client_id = lm.client_id  inner join person_demo pd on p.client_id = pd.client_id  inner join disability d on p.client_id = d.client_id  WHERE NOT EXISTS(select * from medicare where medicare.client_id = p.client_id) AND NOT EXISTS(select * from pregnancy where pregnancy.client_id = p.client_id) AND NOT EXISTS(select * from cwd where cwd.client_id = p.client_id) AND NOT EXISTS(select * from earned_income where earned_income.client_id = p.client_id)  AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id) having age > 18  and d.is_blind ='No' and p.client_id=?";
             String rel3 = "select * from relationship where client_id=?";
                 con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
@@ -405,7 +415,99 @@ public class EDRun extends javax.swing.JPanel {
                 pst3.setString(5,Date_Format.format(end_date));
                 pst3.setString(6, status);
                 pst3.executeUpdate();
-                    }}
+                    }
+                }
+                //code for pregnancy starts here
+                String aca4 ="select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p inner join living_arrangement lm on p.client_id = lm.client_id inner join person_demo pd on p.client_id = pd.client_id inner join pregnancy preg on p.client_id = preg.client_id WHERE NOT EXISTS(select * from medicare where medicare.client_id = p.client_id) AND NOT EXISTS(select * from disability where disability.client_id = p.client_id) AND NOT EXISTS(select * from cwd where cwd.client_id = p.client_id) AND NOT EXISTS(select * from earned_income where earned_income.client_id = p.client_id)  AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id) having age > 18 and p.client_id=?";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst8 = con.prepareStatement(aca4);
+                pst8.setInt(1, id); 
+                rs8 = pst8.executeQuery();
+                if(rs8.next() == true){
+                    JOptionPane.showMessageDialog(this, "Pregnant");
+                         elig = "ACAPR";
+                         income = "$600";
+                         client_id = id;
+                         Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+                calendar.setTime(start_date);
+                calendar.add(Calendar.DATE, 90);
+                end_date = calendar.getTime();
+                         status="Eligible";
+                
+                
+                String eligi = "INSERT into eligibility " + " (client_id,elig,income,start_date,end_date,status)" + " values (?, ?, ?, ?, ?, ?)";
+                pst3 = con.prepareStatement(eligi);
+                pst3.setInt(1, client_id);
+                pst3.setString(2, elig);
+                pst3.setString(3, income);
+                pst3.setString(4,Date_Format.format(start_date));
+                pst3.setString(5,Date_Format.format(end_date));
+                //pst3.setInt(6, 1);
+                pst3.setString(6, status);
+                pst3.executeUpdate();
+                }   
+                
+                
+                //code for cwd starts here
+                String cwd = " select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p inner join living_arrangement lm on p.client_id = lm.client_id inner join person_demo pd on p.client_id = pd.client_id inner join cwd ccwd on p.client_id = ccwd.client_id WHERE NOT EXISTS(select * from medicare where medicare.client_id = p.client_id) AND NOT EXISTS(select * from pregnancy where pregnancy.client_id = p.client_id) AND NOT EXISTS(select * from disability where disability.client_id = p.client_id) AND NOT EXISTS(select * from earned_income where earned_income.client_id = p.client_id)AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id)having age < 18 and ccwd.cwd = 'yes' and ccwd.wwd = 'no' and  p.client_id=?;";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst9 = con.prepareStatement(cwd);
+                pst9.setInt(1, id); 
+                rs9 = pst9.executeQuery();
+                if(rs9.next() == true){
+                    JOptionPane.showMessageDialog(this, "Child with Disability");
+                         elig = "CWD";
+                         income = "$900";
+                         client_id = id;
+                         Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+                calendar.setTime(start_date);
+                calendar.add(Calendar.DATE, 90);
+                end_date = calendar.getTime();
+                         status="Eligible";
+                
+                
+                String eligi = "INSERT into eligibility " + " (client_id,elig,income,start_date,end_date,status)" + " values (?, ?, ?, ?, ?, ?)";
+                pst3 = con.prepareStatement(eligi);
+                pst3.setInt(1, client_id);
+                pst3.setString(2, elig);
+                pst3.setString(3, income);
+                pst3.setString(4,Date_Format.format(start_date));
+                pst3.setString(5,Date_Format.format(end_date));
+                //pst3.setInt(6, 1);
+                pst3.setString(6, status);
+                pst3.executeUpdate();
+                }
+                
+                //code for wwd starts here
+                 String wwd = " select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p inner join living_arrangement lm on p.client_id = lm.client_id inner join person_demo pd on p.client_id = pd.client_id inner join cwd ccwd on p.client_id = ccwd.client_id inner join earned_income ei on p.client_id = ei.client_id WHERE NOT EXISTS(select * from medicare where medicare.client_id = p.client_id) AND NOT EXISTS(select * from pregnancy where pregnancy.client_id = p.client_id) AND NOT EXISTS(select * from disability where disability.client_id = p.client_id)AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id)having age > 18 and ccwd.wwd = 'yes' and ccwd.cwd = 'no' and  p.client_id=?;";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst10 = con.prepareStatement(wwd);
+                pst10.setInt(1, id); 
+                rs10 = pst10.executeQuery();
+                if(rs10.next() == true){
+                    JOptionPane.showMessageDialog(this, "Worker with Disability");
+                         elig = "WWD";
+                         income = "$800";
+                         client_id = id;
+                         Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+                calendar.setTime(start_date);
+                calendar.add(Calendar.DATE, 90);
+                end_date = calendar.getTime();
+                         status="Eligible";
+                
+                
+                String eligi = "INSERT into eligibility " + " (client_id,elig,income,start_date,end_date,status)" + " values (?, ?, ?, ?, ?, ?)";
+                pst3 = con.prepareStatement(eligi);
+                pst3.setInt(1, client_id);
+                pst3.setString(2, elig);
+                pst3.setString(3, income);
+                pst3.setString(4,Date_Format.format(start_date));
+                pst3.setString(5,Date_Format.format(end_date));
+                //pst3.setInt(6, 1);
+                pst3.setString(6, status);
+                pst3.executeUpdate();
+                }    
+                
         } catch(Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }

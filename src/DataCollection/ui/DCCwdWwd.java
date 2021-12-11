@@ -297,8 +297,9 @@ public class DCCwdWwd extends javax.swing.JPanel {
         final boolean enabled = jComboBox1.getSelectedIndex() == 0;
             comboCWD.setEnabled(enabled);
             comboWWD.setEnabled(enabled);
-            
-           
+            if(jComboBox1.getSelectedIndex()== 1){
+                btnSave.setEnabled(false);
+            }    
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
