@@ -168,11 +168,7 @@ public class SearchClient extends javax.swing.JPanel {
 
     
     private void btnContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinueActionPerformed
-
-        DCPersonDetails dc = new DCPersonDetails();
-        jSplitPane1.setRightComponent(dc);
-
-        try{
+ try{
             String query = "INSERT into searchclient " + " (client_id)" + " values (?)";
             con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
             pst = con.prepareStatement(query);
@@ -183,8 +179,9 @@ public class SearchClient extends javax.swing.JPanel {
         } catch(Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-        
-        
+ 
+  DCPersonDetails dc = new DCPersonDetails();
+        jSplitPane1.setRightComponent(dc);
 
     }//GEN-LAST:event_btnContinueActionPerformed
 

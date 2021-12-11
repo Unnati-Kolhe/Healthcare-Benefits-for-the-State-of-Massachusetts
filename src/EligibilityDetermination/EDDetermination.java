@@ -5,17 +5,61 @@
  */
 package EligibilityDetermination;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shubhangisrivastava
  */
 public class EDDetermination extends javax.swing.JPanel {
 
-    /**
-     * Creates new form EDDetermination
-     */
+Connection con = null;
+    PreparedStatement pst = null;
+    PreparedStatement pst2 = null;
+    ResultSet rs = null;
+    ResultSet rs2 = null;
     public EDDetermination() {
         initComponents();
+        fetch();
+    }
+    
+        public void fetch(){
+    try{
+         
+        String query = "select * from searchclient order by id desc limit 1;";
+        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst = con.prepareStatement(query);
+        rs = pst.executeQuery();
+        if(rs.next()){
+        String curr_client = rs.getString("client_id");
+        lblclient.setText(curr_client);
+        }
+    
+        
+        String query2 = "select * from eligibility where client_id=?";
+       // con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+        pst2 = con.prepareStatement(query2);
+         pst2.setString(1, lblclient.getText());
+        rs2 = pst2.executeQuery();
+        if(rs2.next()){
+        String elig = rs2.getString("elig");
+        lblBenefit.setText(elig);
+        String days_left = rs2.getString("days_left");
+        lblLeft.setText(days_left);
+        String status = rs2.getString("status");
+        lblStatus.setText(status);
+        String el_start_date = rs2.getString("start_date");
+        lblStart.setText(el_start_date);
+        String el_end_date = rs2.getString("end_date");
+        lblEnd.setText(el_end_date);
+        }
+    }catch(Exception ex){
+    JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
     }
 
     /**

@@ -26,6 +26,8 @@ public class ARPersonDetails extends javax.swing.JPanel {
     Connection con = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
+    PreparedStatement pst2 = null;
+    ResultSet rs2 = null;
     public ARPersonDetails() {
         initComponents();
     }
@@ -377,6 +379,13 @@ public class ARPersonDetails extends javax.swing.JPanel {
                 pst.setString(9,txtPhone.getText());
                 pst.setString(10,txtSSN.getText());
                 pst.executeUpdate();
+                
+                String query2 = "INSERT into customer_credd " + " (fname,ssn)" + " values (?, ?)";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst2 = con.prepareStatement(query2);
+                pst2.setString(1, txtFName.getText());
+                pst2.setString(2, txtSSN.getText());
+                pst2.executeUpdate();
             }
         } catch(Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
