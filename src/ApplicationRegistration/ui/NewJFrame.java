@@ -5,6 +5,7 @@
  */
 package ApplicationRegistration.ui;
 
+import Customer.CustomerSign;
 import DataCollection.ui.DCPersonDetails;
 import Notices.ClientSearch1;
 import java.sql.Connection;
@@ -221,9 +222,8 @@ DCPersonDetails pd;
                     jSplitPane1.setRightComponent(cs);
                     
                 } else if (dropdown.getSelectedIndex()==3){
-                    Customer cus = new Customer();
-                    cus.setVisible(true);
-                    this.setVisible(false);
+                    CustomerSign cus = new CustomerSign();
+                    jSplitPane1.setRightComponent(cus);
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Username and Password do not match");
