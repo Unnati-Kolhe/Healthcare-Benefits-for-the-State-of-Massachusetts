@@ -49,7 +49,12 @@ public class EDRun extends javax.swing.JPanel {
     ResultSet rs9 = null;
     PreparedStatement pst10 = null;
     ResultSet rs10 = null;
-    
+     PreparedStatement pst11 = null;
+    ResultSet rs11 = null;
+     PreparedStatement pst12 = null;
+    ResultSet rs12 = null;
+     PreparedStatement pst13 = null;
+    ResultSet rs13 = null;
     public EDRun() {
         initComponents();
         fetch();
@@ -205,23 +210,23 @@ public class EDRun extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(403, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(29, 29, 29)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -506,8 +511,99 @@ public class EDRun extends javax.swing.JPanel {
                 //pst3.setInt(6, 1);
                 pst3.setString(6, status);
                 pst3.executeUpdate();
-                }    
+                } 
                 
+                
+                //code for medicare a starts here
+                 String medA = "  select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p  inner join living_arrangement lm on p.client_id = lm.client_id  inner join person_demo pd on p.client_id = pd.client_id  inner join medicare med on p.client_id = med.client_id AND NOT EXISTS(select * from pregnancy where pregnancy.client_id = p.client_id) AND NOT EXISTS(select * from cwd where cwd.client_id = p.client_id)AND NOT EXISTS(select * from disability where disability.client_id = p.client_id)AND NOT EXISTS(select * from earned_income where earned_income.client_id = p.client_id) AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id)having age > 18 and med.medicare_a = 'Yes' and med.medicare_b = 'No' and med.medicare_both = 'No' and  p.client_id=?;";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst11 = con.prepareStatement(medA);
+                pst11.setInt(1, id); 
+                rs11 = pst11.executeQuery();
+                if(rs11.next() == true){
+                    JOptionPane.showMessageDialog(this, "Medicare Part A");
+                         elig = "Medicare";
+                         income = "$300";
+                         client_id = id;
+                         Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+                calendar.setTime(start_date);
+                calendar.add(Calendar.DATE, 90);
+                end_date = calendar.getTime();
+                         status="Eligible";
+                
+                
+                String eligi = "INSERT into eligibility " + " (client_id,elig,income,start_date,end_date,status)" + " values (?, ?, ?, ?, ?, ?)";
+                pst3 = con.prepareStatement(eligi);
+                pst3.setInt(1, client_id);
+                pst3.setString(2, elig);
+                pst3.setString(3, income);
+                pst3.setString(4,Date_Format.format(start_date));
+                pst3.setString(5,Date_Format.format(end_date));
+                //pst3.setInt(6, 1);
+                pst3.setString(6, status);
+                pst3.executeUpdate();
+                } 
+                
+                //code for medicare b starts here
+                 String medB = "  select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p  inner join living_arrangement lm on p.client_id = lm.client_id  inner join person_demo pd on p.client_id = pd.client_id  inner join medicare med on p.client_id = med.client_id AND NOT EXISTS(select * from pregnancy where pregnancy.client_id = p.client_id) AND NOT EXISTS(select * from cwd where cwd.client_id = p.client_id)AND NOT EXISTS(select * from disability where disability.client_id = p.client_id)AND NOT EXISTS(select * from earned_income where earned_income.client_id = p.client_id) AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id)having age > 18 and med.medicare_a = 'No' and med.medicare_b = 'Yes' and med.medicare_both = 'No' and  p.client_id=?;";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst12 = con.prepareStatement(medB);
+                pst12.setInt(1, id); 
+                rs12 = pst12.executeQuery();
+                if(rs12.next() == true){
+                    JOptionPane.showMessageDialog(this, "Medicare Part B");
+                         elig = "QMB";
+                         income = "$400";
+                         client_id = id;
+                         Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+                calendar.setTime(start_date);
+                calendar.add(Calendar.DATE, 90);
+                end_date = calendar.getTime();
+                         status="Eligible";
+                
+                
+                String eligi = "INSERT into eligibility " + " (client_id,elig,income,start_date,end_date,status)" + " values (?, ?, ?, ?, ?, ?)";
+                pst3 = con.prepareStatement(eligi);
+                pst3.setInt(1, client_id);
+                pst3.setString(2, elig);
+                pst3.setString(3, income);
+                pst3.setString(4,Date_Format.format(start_date));
+                pst3.setString(5,Date_Format.format(end_date));
+                //pst3.setInt(6, 1);
+                pst3.setString(6, status);
+                pst3.executeUpdate();
+                } 
+                
+                
+                //code for medicare both starts here:
+                String medBoth = "  select *,TIMESTAMPDIFF(year,dob,CURDATE()) as age from person p  inner join living_arrangement lm on p.client_id = lm.client_id  inner join person_demo pd on p.client_id = pd.client_id  inner join medicare med on p.client_id = med.client_id AND NOT EXISTS(select * from pregnancy where pregnancy.client_id = p.client_id) AND NOT EXISTS(select * from cwd where cwd.client_id = p.client_id)AND NOT EXISTS(select * from disability where disability.client_id = p.client_id)AND NOT EXISTS(select * from earned_income where earned_income.client_id = p.client_id) AND NOT EXISTS(select * from unearned_income where unearned_income.client_id = p.client_id)having age > 18 and med.medicare_a = 'No' and med.medicare_b = 'No' and med.medicare_both = 'Yes' and  p.client_id=?;";
+                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+                pst13 = con.prepareStatement(medBoth);
+                pst13.setInt(1, id); 
+                rs13 = pst13.executeQuery();
+                if(rs13.next() == true){
+                    JOptionPane.showMessageDialog(this, "Medicare Part Both");
+                         elig = "SLMB";
+                         income = "$500";
+                         client_id = id;
+                         Calendar calendar = new GregorianCalendar(/* remember about timezone! */);
+                calendar.setTime(start_date);
+                calendar.add(Calendar.DATE, 90);
+                end_date = calendar.getTime();
+                         status="Eligible";
+                
+                
+                String eligi = "INSERT into eligibility " + " (client_id,elig,income,start_date,end_date,status)" + " values (?, ?, ?, ?, ?, ?)";
+                pst3 = con.prepareStatement(eligi);
+                pst3.setInt(1, client_id);
+                pst3.setString(2, elig);
+                pst3.setString(3, income);
+                pst3.setString(4,Date_Format.format(start_date));
+                pst3.setString(5,Date_Format.format(end_date));
+                //pst3.setInt(6, 1);
+                pst3.setString(6, status);
+                pst3.executeUpdate();
+                }            
         } catch(Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }

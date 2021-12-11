@@ -412,6 +412,10 @@ try{
         //            jDateChooser2
         //             DtIncStDt
         //                    DtIncEndDt
+
+        if(jComboBox1.getSelectedIndex()== 1){
+                btnSave.setEnabled(false);
+            } 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
