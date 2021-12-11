@@ -6,6 +6,7 @@
 package ApplicationRegistration.ui;
 
 import DataCollection.ui.DCPersonDetails;
+import Notices.ClientSearch1;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -212,9 +213,13 @@ DCPersonDetails pd;
                     SearchClient sc = new SearchClient(pd);
                     jSplitPane1.setRightComponent(sc);
                 } else if(dropdown.getSelectedIndex()==2){
-                    NOAdmin no = new NOAdmin();
-                    no.setVisible(true);
-                    this.setVisible(false);
+//                    NOAdmin no = new NOAdmin();
+//                    no.setVisible(true);
+//                    this.setVisible(false);
+                    
+                    ClientSearch1 cs = new ClientSearch1();
+                    jSplitPane1.setRightComponent(cs);
+                    
                 } else if (dropdown.getSelectedIndex()==3){
                     Customer cus = new Customer();
                     cus.setVisible(true);

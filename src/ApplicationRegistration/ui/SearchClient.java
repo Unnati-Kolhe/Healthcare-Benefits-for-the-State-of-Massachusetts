@@ -42,10 +42,8 @@ public class SearchClient extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        lblSSN = new javax.swing.JLabel();
         lblClient = new javax.swing.JLabel();
         btnContinue = new javax.swing.JButton();
-        txtSSN = new javax.swing.JTextField();
         txtClientID = new javax.swing.JTextField();
 
         jSplitPane1.setBackground(new java.awt.Color(102, 204, 255));
@@ -75,9 +73,6 @@ public class SearchClient extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(197, 221, 243));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        lblSSN.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblSSN.setText("Enter SSN:");
-
         lblClient.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         lblClient.setText("Client ID:");
 
@@ -86,12 +81,6 @@ public class SearchClient extends javax.swing.JPanel {
         btnContinue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContinueActionPerformed(evt);
-            }
-        });
-
-        txtSSN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSSNActionPerformed(evt);
             }
         });
 
@@ -107,16 +96,12 @@ public class SearchClient extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(127, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSSN)
-                    .addComponent(lblClient))
-                .addGap(111, 111, 111)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(155, 155, 155))
+                .addComponent(lblClient)
+                .addGap(120, 120, 120)
+                .addComponent(txtClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(163, 163, 163))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(289, 289, 289)
+                .addGap(236, 236, 236)
                 .addComponent(btnContinue)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -127,13 +112,9 @@ public class SearchClient extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClient)
                     .addComponent(txtClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSSN)
-                    .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(78, 78, 78)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(btnContinue)
-                .addGap(22, 22, 22))
+                .addGap(79, 79, 79))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -207,10 +188,6 @@ public class SearchClient extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnContinueActionPerformed
 
-    private void txtSSNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSSNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSSNActionPerformed
-
     private void txtClientIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClientIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClientIDActionPerformed
@@ -255,8 +232,6 @@ public class SearchClient extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblClient;
-    private javax.swing.JLabel lblSSN;
     private javax.swing.JTextField txtClientID;
-    private javax.swing.JTextField txtSSN;
     // End of variables declaration//GEN-END:variables
 }
