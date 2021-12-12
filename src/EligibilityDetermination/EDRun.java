@@ -5,6 +5,7 @@
  */
 package EligibilityDetermination;
 
+import DataCollection.ui.DCUnearnedIncome;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -21,6 +22,16 @@ import java.util.Date;
 import static java.util.Date.from;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;  
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;  
+import org.jfree.chart.JFreeChart;  
+import org.jfree.chart.labels.PieSectionLabelGenerator;  
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;  
+import org.jfree.chart.plot.PiePlot;  
+import org.jfree.chart.plot.PiePlot3D;
+import org.jfree.data.general.DefaultPieDataset;  
+import org.jfree.data.general.PieDataset;  
 
 /**
  *
@@ -55,9 +66,16 @@ public class EDRun extends javax.swing.JPanel {
     ResultSet rs12 = null;
      PreparedStatement pst13 = null;
     ResultSet rs13 = null;
+    PreparedStatement pst14 = null;
+    ResultSet rs14 = null;
+    PreparedStatement pst15 = null;
+    ResultSet rs15 = null;
+      PreparedStatement pst16 = null;
+    ResultSet rs16 = null;
     public EDRun() {
         initComponents();
         fetch();
+        
     }
     
      public void fetch(){
@@ -96,6 +114,7 @@ public class EDRun extends javax.swing.JPanel {
         txtCSCD = new javax.swing.JTextField();
         lblClientID1 = new javax.swing.JLabel();
         txtHEalthCoverage = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jSplitPane1.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -205,6 +224,13 @@ public class EDRun extends javax.swing.JPanel {
                 .addGap(16, 16, 16))
         );
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -216,7 +242,10 @@ public class EDRun extends javax.swing.JPanel {
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(85, 85, 85)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addComponent(jButton1)))
                 .addContainerGap(403, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -226,7 +255,9 @@ public class EDRun extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(jButton1)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -621,9 +652,82 @@ public class EDRun extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHEalthCoverageActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+DCUnearnedIncome du = new DCUnearnedIncome();
+        jSplitPane1.setRightComponent(du);
+//        int aca_count = 0;
+//        int abdblind_count = 0;
+//         DefaultPieDataset dataset = new DefaultPieDataset();
+//         try{
+//         
+//         
+//        String query = "select * from searchclient order by id desc limit 1;";
+//        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+//        pst16 = con.prepareStatement(query);
+//        rs16 = pst16.executeQuery();
+//        if(rs16.next()){
+//        String curr_client = rs16.getString("client_id");
+//        lblClientID1.setText(curr_client);
+//        }
+//    
+//        
+//        String query2 = "select count(*) as count from eligibility where elig='ACA';";
+//        JOptionPane.showMessageDialog(this,  "h1" );
+//       // con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+//        pst14 = con.prepareStatement(query2);
+//          JOptionPane.showMessageDialog(this,  "h2" );
+//          JOptionPane.showMessageDialog(this,  "h3" );
+//        rs14 = pst14.executeQuery();
+//                  JOptionPane.showMessageDialog(this,  "h4" );
+//        if(rs14.next()){
+//            JOptionPane.showMessageDialog(this,  "h5" );
+//            aca_count = rs14.getInt("count");
+//            JOptionPane.showMessageDialog(this,  "h6" );
+//             dataset.setValue("ACA",aca_count);
+//             JOptionPane.showMessageDialog(this,  "h7" );
+//             JOptionPane.showMessageDialog(this,  aca_count );
+//             JOptionPane.showMessageDialog(this,  "h8" );
+//        }
+//        
+//         
+//        String query3 = "select count(*) as count from eligibility where elig='ABD Blind';";
+//        JOptionPane.showMessageDialog(this,  "h9" );
+//       // con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+//        pst15= con.prepareStatement(query3);
+//         JOptionPane.showMessageDialog(this,  "h10" );
+//         JOptionPane.showMessageDialog(this,  "h11" );
+//        rs15 = pst15.executeQuery();
+//        JOptionPane.showMessageDialog(this,  "h12" );
+//        if(rs15.next()){
+//             JOptionPane.showMessageDialog(this,  "h13" );
+//            abdblind_count = rs15.getInt("count");
+//             JOptionPane.showMessageDialog(this,  "h14" );
+//             dataset.setValue("ABD Blind",abdblind_count);
+//              JOptionPane.showMessageDialog(this,  "h15" );
+//             JOptionPane.showMessageDialog(this,  aca_count );
+//              JOptionPane.showMessageDialog(this,  "h16" );
+//        }
+//        
+//    }catch(Exception ex){
+//    JOptionPane.showMessageDialog(this, ex.getMessage());
+//    }
+//         JOptionPane.showMessageDialog(this,  "h17" );
+//         JFreeChart chart = ChartFactory.createPieChart3D("Pie Chart",dataset,true,true,true);
+//         JOptionPane.showMessageDialog(this,  "h18" );
+//         PiePlot p = (PiePlot)chart.getPlot();
+//         p.setForegroundAlpha(TOP_ALIGNMENT);
+//         JOptionPane.showMessageDialog(this,  "h19" );
+//         ChartFrame frame = new ChartFrame("Pie Chart",chart);
+//         JOptionPane.showMessageDialog(this,  "h20" );
+//         frame.setVisible(true);
+//         JOptionPane.showMessageDialog(this,  "h21" );
+//         frame.setSize(500,600);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEDRun;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
