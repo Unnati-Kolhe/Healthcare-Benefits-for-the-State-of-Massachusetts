@@ -302,6 +302,7 @@ public class ARFileClearance extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
         
+        JOptionPane.showMessageDialog(this,"Customer Details updated");
     }//GEN-LAST:event_UpdateActionPerformed
 
     

@@ -182,9 +182,9 @@ public class DCDisability extends javax.swing.JPanel {
                     .addComponent(lblDisType)
                     .addComponent(lblVerify)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(94, 94, 94)
                         .addComponent(btnSave)
-                        .addGap(75, 75, 75)
+                        .addGap(32, 32, 32)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35))
         );
@@ -258,7 +258,7 @@ public class DCDisability extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)

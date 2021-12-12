@@ -145,10 +145,40 @@ public class DCMedicare extends javax.swing.JPanel {
         lblBoth.setText("Both:");
 
         chkA.setLabel("check yes if applicable");
+        chkA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkAMouseClicked(evt);
+            }
+        });
+        chkA.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkAItemStateChanged(evt);
+            }
+        });
 
         chkB.setLabel("check yes if applicable");
+        chkB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkBMouseClicked(evt);
+            }
+        });
+        chkB.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkBItemStateChanged(evt);
+            }
+        });
 
         chkBoth.setLabel("check yes if applicable");
+        chkBoth.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkBothMouseClicked(evt);
+            }
+        });
+        chkBoth.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkBothItemStateChanged(evt);
+            }
+        });
 
         lblClientID2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblClientID2.setText("Client ID:");
@@ -164,10 +194,10 @@ public class DCMedicare extends javax.swing.JPanel {
                 .addGap(103, 103, 103)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMedA)
-                            .addComponent(lblMedB)
-                            .addComponent(lblBoth))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblMedA, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMedB, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBoth, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(146, 146, 146)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(chkB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,11 +298,9 @@ public class DCMedicare extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jButton1))
+                            .addComponent(jButton1)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(341, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,9 +313,9 @@ public class DCMedicare extends javax.swing.JPanel {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -367,6 +395,48 @@ public class DCMedicare extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
  DCCwdWwd ei = new DCCwdWwd();
         jSplitPane1.setRightComponent(ei);    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void chkAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkAMouseClicked
+//        if(chkA.isEnabled()){
+//        chkB.setEnabled(false);
+//        chkBoth.setEnabled(false);
+//        }
+    }//GEN-LAST:event_chkAMouseClicked
+
+    private void chkBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkBMouseClicked
+//       if(chkB.isEnabled()){
+//        chkA.setEnabled(false);
+//        chkBoth.setEnabled(false);
+//        }
+    }//GEN-LAST:event_chkBMouseClicked
+
+    private void chkBothMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkBothMouseClicked
+        if(chkBoth.isEnabled()){
+        chkA.setEnabled(false);
+        chkB.setEnabled(false);
+        }
+    }//GEN-LAST:event_chkBothMouseClicked
+
+    private void chkAItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkAItemStateChanged
+        if(chkA.isEnabled()){
+        chkB.setEnabled(false);
+        chkBoth.setEnabled(false);
+        }
+    }//GEN-LAST:event_chkAItemStateChanged
+
+    private void chkBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkBItemStateChanged
+       if(chkB.isEnabled()){
+        chkA.setEnabled(false);
+        chkBoth.setEnabled(false);
+        }
+    }//GEN-LAST:event_chkBItemStateChanged
+
+    private void chkBothItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkBothItemStateChanged
+          if(chkBoth.isEnabled()){
+        chkA.setEnabled(false);
+        chkB.setEnabled(false);
+        }
+    }//GEN-LAST:event_chkBothItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

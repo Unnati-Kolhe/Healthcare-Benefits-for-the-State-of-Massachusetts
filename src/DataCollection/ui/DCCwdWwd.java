@@ -114,8 +114,18 @@ public class DCCwdWwd extends javax.swing.JPanel {
         lblWWDques.setText("Is the individual requesting Worker with Disability(WWD)?:");
 
         comboCWD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
+        comboCWD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCWDActionPerformed(evt);
+            }
+        });
 
         comboWWD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
+        comboWWD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboWWDActionPerformed(evt);
+            }
+        });
 
         btnSave.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnSave.setText("Save");
@@ -147,36 +157,37 @@ public class DCCwdWwd extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
+                        .addGap(81, 81, 81)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblWWDques, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCWDques, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblClientID1)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(comboWWD, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboCWD, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(331, 331, 331)
+                                        .addComponent(lblClientID2)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblFName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblFName1)
+                                .addGap(68, 68, 68))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(242, 242, 242)
                         .addComponent(btnSave)
-                        .addGap(75, 75, 75)
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblWWDques, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblCWDques, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(lblClientID1)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(comboWWD, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboCWD, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(331, 331, 331)
-                                    .addComponent(lblClientID2)
-                                    .addGap(0, 0, Short.MAX_VALUE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(lblFName)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblFName1)
-                            .addGap(68, 68, 68))))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(82, 82, 82))
         );
 
@@ -248,9 +259,7 @@ public class DCCwdWwd extends javax.swing.JPanel {
                                 .addComponent(jLabel2)
                                 .addGap(51, 51, 51)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jButton1))))
+                            .addComponent(jButton1)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(128, 128, 128)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -267,9 +276,9 @@ public class DCCwdWwd extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -327,6 +336,20 @@ public class DCCwdWwd extends javax.swing.JPanel {
          DcPregnancy dm = new DcPregnancy();
         jSplitPane1.setRightComponent(dm);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void comboCWDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCWDActionPerformed
+       
+        if(comboCWD.isEnabled()){
+            comboWWD.setEnabled(false);
+        }
+        
+    }//GEN-LAST:event_comboCWDActionPerformed
+
+    private void comboWWDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboWWDActionPerformed
+        if(comboWWD.isEnabled()){
+            comboCWD.setEnabled(false);
+        }
+    }//GEN-LAST:event_comboWWDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

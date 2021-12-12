@@ -403,6 +403,8 @@ public class ARPersonDetails extends javax.swing.JPanel {
         } catch(Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
+        JOptionPane.showMessageDialog(this, "Customer Details Saved");
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
