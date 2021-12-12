@@ -256,14 +256,35 @@ public class ARFileClearance extends javax.swing.JPanel {
                 rss = pstt.executeQuery();
                 if(rss.next())
                 {
-                    String ssn2 = rss.getString("client_id");
-                     String query = "UPDATE person SET ssn=? where client_id=?";
+                String ssn2 = rss.getString("client_id");
+//                String query = "UPDATE person SET ssn=? where client_id=?";
+//                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
+//                pst = con.prepareStatement(query);
+//                String ssn1="";
+//                String ssn = JOptionPane.showInputDialog(null, "Enter updated SSN", ssn1);
+//                pst.setString(1, ssn);
+//                pst.setString(2, rss.getString("client_id"));
+//                pst.executeUpdate();
+                
+                String query = "UPDATE person SET fname=?, mname=?, lname=?, marital_status=?, gender=?, phone=?, ssn=? where client_id=?;";
                 con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", "root", "Kidwainagar@1221");
                 pst = con.prepareStatement(query);
-                String ssn1="";
+                String ssn1="",fname1="",mname1="",lname1="",marital_status1="",gender1="",phone1="";
+                String fname = JOptionPane.showInputDialog(null, "Enter updated First Name", fname1);
+                String mname = JOptionPane.showInputDialog(null, "Enter updated Middle Name", mname1);
+                String lname = JOptionPane.showInputDialog(null, "Enter updated Last Name", lname1);
+                String marital_status = JOptionPane.showInputDialog(null, "Enter updated Marital Status", marital_status1);
+                String phone = JOptionPane.showInputDialog(null, "Enter updated Phone Number", phone1);
+                String gender = JOptionPane.showInputDialog(null, "Enter updated Gender", gender1);
                 String ssn = JOptionPane.showInputDialog(null, "Enter updated SSN", ssn1);
-                pst.setString(1, ssn);
-                pst.setString(2, rss.getString("client_id"));
+                pst.setString(1, fname);
+                pst.setString(2, mname);
+                pst.setString(3, lname);
+                pst.setString(4, marital_status);
+                pst.setString(5, gender);
+                pst.setString(6, phone);
+                pst.setString(7, ssn);
+                pst.setString(8, rss.getString("client_id"));
                 pst.executeUpdate();
                 }
                 
