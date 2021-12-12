@@ -75,10 +75,10 @@ public class DCCwdWwd extends javax.swing.JPanel {
         lblClientID1 = new javax.swing.JLabel();
         lblClientID2 = new javax.swing.JLabel();
         lblFName1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         jSplitPane1.setBackground(new java.awt.Color(102, 204, 255));
         jSplitPane1.setDividerLocation(145);
@@ -142,13 +142,6 @@ public class DCCwdWwd extends javax.swing.JPanel {
         lblFName1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblFName1.setText("First Name:");
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -157,9 +150,7 @@ public class DCCwdWwd extends javax.swing.JPanel {
                 .addGap(81, 81, 81)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
+                        .addGap(104, 104, 104)
                         .addComponent(btnSave)
                         .addGap(75, 75, 75)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -216,9 +207,8 @@ public class DCCwdWwd extends javax.swing.JPanel {
                         .addGap(27, 27, 27)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
-                    .addComponent(btnNext)
-                    .addComponent(jButton1))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addComponent(btnNext))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -232,6 +222,14 @@ public class DCCwdWwd extends javax.swing.JPanel {
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -249,7 +247,10 @@ public class DCCwdWwd extends javax.swing.JPanel {
                                 .addGap(67, 67, 67)
                                 .addComponent(jLabel2)
                                 .addGap(51, 51, 51)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jButton1))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(128, 128, 128)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -266,7 +267,9 @@ public class DCCwdWwd extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(180, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);

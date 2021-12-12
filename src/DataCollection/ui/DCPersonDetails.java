@@ -88,8 +88,6 @@ public class DCPersonDetails extends javax.swing.JPanel {
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         lblFName = new javax.swing.JLabel();
@@ -123,6 +121,7 @@ public class DCPersonDetails extends javax.swing.JPanel {
         jSplitPane1.setDividerSize(0);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(0, 642));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,20 +139,14 @@ public class DCPersonDetails extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(102, 204, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1022, 646));
 
-        jPanel3.setBackground(new java.awt.Color(102, 204, 255));
-        jPanel3.setPreferredSize(new java.awt.Dimension(1022, 646));
-
-        jPanel4.setBackground(new java.awt.Color(102, 204, 255));
-        jPanel4.setPreferredSize(new java.awt.Dimension(1022, 646));
-
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Data Collection - Person Details");
 
         jPanel5.setBackground(new java.awt.Color(204, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        lblFName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblFName.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblFName.setText("First Name:");
 
         txtFName.setEnabled(false);
@@ -163,39 +156,39 @@ public class DCPersonDetails extends javax.swing.JPanel {
             }
         });
 
-        lblMName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblMName.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblMName.setText("Middle Name:");
 
         txtMName.setEnabled(false);
 
-        lblLName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblLName.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblLName.setText("Last Name:");
 
-        lblDob.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblDob.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDob.setText("Date of Birth:");
 
         txtLName.setEnabled(false);
 
-        lblMarital.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblMarital.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblMarital.setText("Marital Status:");
 
-        lblRace.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblRace.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblRace.setText("Race:");
 
-        lblEth.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblEth.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblEth.setText("Ethnicity:");
 
-        lblGender.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblGender.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblGender.setText("Gender:");
 
         txtMarital.setEnabled(false);
 
-        lblPhone.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblPhone.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblPhone.setText("Phone Number:");
 
         txtPhone.setEnabled(false);
 
-        btnNext.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        btnNext.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnNext.setText("Next");
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,15 +196,15 @@ public class DCPersonDetails extends javax.swing.JPanel {
             }
         });
 
-        lblSSN.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblSSN.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblSSN.setText("SSN:");
 
         txtSSN.setEnabled(false);
 
-        lblClient.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClient.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblClient.setText("Client ID:");
 
-        lblClient1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClient1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblClient1.setText("Client ID:");
 
         txtDob.setEnabled(false);
@@ -231,52 +224,55 @@ public class DCPersonDetails extends javax.swing.JPanel {
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(119, 119, 119)
+                .addGap(113, 113, 113)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblGender)
-                                        .addComponent(lblEth))
-                                    .addGap(49, 49, 49))
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblRace)
-                                    .addComponent(lblMarital)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtMarital, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(txtPhone, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtRace)
-                                .addComponent(txtGender)
-                                .addComponent(txtEthnicity)))
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblGender)
+                                .addComponent(lblEth))
+                            .addGap(49, 49, 49))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblDob)
                                 .addComponent(lblLName))
-                            .addGap(185, 185, 185)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtLName, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(txtDob)))
+                            .addGap(19, 19, 19))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblMName)
                                 .addComponent(lblFName)
                                 .addComponent(lblClient))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(15, 15, 15)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblPhone, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSSN, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMarital, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRace, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(6, 6, 6)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtMarital, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(txtPhone, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtRace)
+                            .addComponent(txtGender)
+                            .addComponent(txtEthnicity)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtLName, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                .addComponent(txtDob))
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblClient1)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtMName, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(txtFName)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPhone)
-                            .addComponent(lblSSN))
+                                .addComponent(txtMName, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(163, 163, 163)
-                        .addComponent(txtSSN, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
-                .addContainerGap(165, Short.MAX_VALUE))
+                        .addComponent(txtSSN)))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,56 +328,25 @@ public class DCPersonDetails extends javax.swing.JPanel {
                 .addGap(22, 22, 22))
         );
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(189, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 57, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 50, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -445,8 +410,6 @@ public class DCPersonDetails extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblClient;

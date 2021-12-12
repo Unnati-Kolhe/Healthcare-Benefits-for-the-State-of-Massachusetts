@@ -138,11 +138,12 @@ Connection con = null;
         });
 
         jSplitPane1.setBackground(new java.awt.Color(102, 204, 255));
-        jSplitPane1.setDividerSize(-20);
+        jSplitPane1.setDividerLocation(145);
+        jSplitPane1.setDividerSize(0);
 
         jPanel3.setBackground(new java.awt.Color(102, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Eligibility Determination - ED Results");
 
@@ -162,40 +163,40 @@ Connection con = null;
         jPanel5.setBackground(new java.awt.Color(204, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel2.setText("Client ID:");
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel3.setText("Eligibility Start Date :");
 
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel4.setText("Status:");
 
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel5.setText("Eligibility End Date:");
 
-        Benefit.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        Benefit.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         Benefit.setText("Benefit:");
 
-        Benefit1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        Benefit1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         Benefit1.setText("Days Left:");
 
-        lblclient.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblclient.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblclient.setText("Client ID:");
 
-        lblStart.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblStart.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblStart.setText("Eligibility Start Date :");
 
-        lblStatus.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblStatus.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblStatus.setText("Status:");
 
-        lblEnd.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblEnd.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblEnd.setText("Eligibility End Date:");
 
-        lblBenefit.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblBenefit.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblBenefit.setText("Benefit:");
 
-        lblLeft.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblLeft.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblLeft.setText("Days Left:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -205,56 +206,60 @@ Connection con = null;
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Benefit1)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel5)
-                        .addComponent(Benefit)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblLeft)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblStatus)
-                        .addComponent(lblEnd)
-                        .addComponent(lblBenefit)
-                        .addComponent(lblclient)
-                        .addComponent(lblStart, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(192, Short.MAX_VALUE))
+                    .addComponent(lblStart)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Benefit1)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(Benefit)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(155, 155, 155)
+                                .addComponent(lblclient))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblEnd, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblBenefit, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblLeft, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblStatus, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(lblclient)
-                        .addGap(29, 29, 29)
-                        .addComponent(lblStart)
-                        .addGap(39, 39, 39)
-                        .addComponent(lblEnd)
-                        .addGap(33, 33, 33)
-                        .addComponent(lblBenefit)
-                        .addGap(27, 27, 27)
-                        .addComponent(lblLeft)
-                        .addGap(26, 26, 26)
-                        .addComponent(lblStatus))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel3)
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel5)
-                        .addGap(33, 33, 33)
-                        .addComponent(Benefit)
-                        .addGap(27, 27, 27)
-                        .addComponent(Benefit1)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel4)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lblclient))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lblStart))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(lblEnd))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Benefit)
+                    .addComponent(lblBenefit))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Benefit1)
+                    .addComponent(lblLeft))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(lblStatus))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
+        btnLogout.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,9 +281,9 @@ Connection con = null;
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(322, 322, 322)
+                        .addGap(306, 306, 306)
                         .addComponent(btnLogout)))
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addContainerGap(366, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +292,7 @@ Connection con = null;
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(btnLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -297,13 +302,13 @@ Connection con = null;
 
         jSplitPane1.setRightComponent(jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 143, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -108,17 +108,19 @@ public class EDRun extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         lblClientID = new javax.swing.JLabel();
-        lblCSCD = new javax.swing.JLabel();
         btnEDRun = new javax.swing.JButton();
         lblRelativeName = new javax.swing.JLabel();
-        txtCSCD = new javax.swing.JTextField();
         lblClientID1 = new javax.swing.JLabel();
         txtHEalthCoverage = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        jSplitPane1.setBackground(new java.awt.Color(102, 204, 255));
+        setPreferredSize(new java.awt.Dimension(1175, 646));
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jSplitPane1.setBackground(new java.awt.Color(102, 204, 255));
+        jSplitPane1.setDividerLocation(145);
+        jSplitPane1.setDividerSize(0);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,27 +130,25 @@ public class EDRun extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGap(0, 660, Short.MAX_VALUE)
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1022, 646));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Eligibility Determination - ED Run");
 
-        jPanel5.setBackground(new java.awt.Color(197, 221, 243));
+        jPanel5.setBackground(new java.awt.Color(204, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        lblClientID.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClientID.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblClientID.setText("Client ID:");
 
-        lblCSCD.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        lblCSCD.setText("CSCD:");
-
-        btnEDRun.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        btnEDRun.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnEDRun.setText("Run Eligibility ");
         btnEDRun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,16 +156,10 @@ public class EDRun extends javax.swing.JPanel {
             }
         });
 
-        lblRelativeName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblRelativeName.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblRelativeName.setText("Program Requested:");
 
-        txtCSCD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCSCDActionPerformed(evt);
-            }
-        });
-
-        lblClientID1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClientID1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblClientID1.setText("Client ID:");
 
         txtHEalthCoverage.setText("Health Care Coverage");
@@ -180,50 +174,39 @@ public class EDRun extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(lblRelativeName)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtHEalthCoverage, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblClientID)
-                            .addComponent(lblCSCD))
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(144, 144, 144)
-                                .addComponent(lblClientID1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(123, 123, 123)
-                                .addComponent(txtCSCD, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(6, 6, 6))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(btnEDRun, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblClientID, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblRelativeName, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(69, 69, 69)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtHEalthCoverage, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblClientID1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnEDRun, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(159, 159, 159))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCSCD)
-                    .addComponent(txtCSCD, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(lblClientID)
+                    .addComponent(lblClientID1))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClientID1)
-                    .addComponent(lblClientID))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblRelativeName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtHEalthCoverage, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(24, 24, 24)
+                    .addComponent(lblRelativeName)
+                    .addComponent(txtHEalthCoverage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addComponent(btnEDRun)
-                .addGap(16, 16, 16))
+                .addGap(49, 49, 49))
         );
 
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,26 +221,25 @@ public class EDRun extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
+                        .addGap(57, 57, 57)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(345, 345, 345)
-                        .addComponent(jButton1)))
-                .addContainerGap(403, Short.MAX_VALUE))
+                        .addGap(126, 126, 126)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(347, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -271,7 +253,7 @@ public class EDRun extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -644,10 +626,6 @@ public class EDRun extends javax.swing.JPanel {
 
 
     
-    private void txtCSCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCSCDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCSCDActionPerformed
-
     private void txtHEalthCoverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHEalthCoverageActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHEalthCoverageActionPerformed
@@ -733,11 +711,9 @@ DCUnearnedIncome du = new DCUnearnedIncome();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JLabel lblCSCD;
     private javax.swing.JLabel lblClientID;
     private javax.swing.JLabel lblClientID1;
     private javax.swing.JLabel lblRelativeName;
-    private javax.swing.JTextField txtCSCD;
     private javax.swing.JTextField txtHEalthCoverage;
     // End of variables declaration//GEN-END:variables
 }

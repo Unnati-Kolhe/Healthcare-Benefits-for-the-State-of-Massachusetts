@@ -76,10 +76,10 @@ public class DcPregnancy extends javax.swing.JPanel {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         lblClientID2 = new javax.swing.JLabel();
         lblFName1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         jSplitPane1.setBackground(new java.awt.Color(102, 204, 255));
         jSplitPane1.setDividerLocation(145);
@@ -102,26 +102,26 @@ public class DcPregnancy extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(102, 204, 255));
 
-        jPanel3.setBackground(new java.awt.Color(197, 221, 243));
+        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        lblFName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblFName.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblFName.setText("Name:");
 
-        lblDocType.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblDocType.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDocType.setText("Is the mother pregnant for more than 3 months?");
 
-        lblVerify.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblVerify.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblVerify.setText("Is she receiving medical aid?");
 
-        lblCitizen.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblCitizen.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblCitizen.setText("Due Date:");
 
         comboIdentity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
         comboVerify.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
-        btnSave.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        btnSave.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +129,7 @@ public class DcPregnancy extends javax.swing.JPanel {
             }
         });
 
-        btnNext.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        btnNext.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnNext.setText("Next");
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,58 +137,53 @@ public class DcPregnancy extends javax.swing.JPanel {
             }
         });
 
-        lblClientID1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClientID1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblClientID1.setText("Client ID:");
 
-        lblClientID2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblClientID2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblClientID2.setText("Client ID:");
 
-        lblFName1.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        lblFName1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblFName1.setText("Name:");
-
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(115, 115, 115)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDocType)
-                    .addComponent(lblVerify)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFName)
-                            .addComponent(lblClientID1)
-                            .addComponent(lblCitizen))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDocType)
+                            .addComponent(lblVerify)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(288, 288, 288)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(282, 282, 282)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblClientID2)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(comboIdentity, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboVerify, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblFName1))))))
+                                    .addComponent(lblFName)
+                                    .addComponent(lblClientID1)
+                                    .addComponent(lblCitizen))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(288, 288, 288)
+                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(282, 282, 282)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblClientID2)
+                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(comboIdentity, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(comboVerify, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(lblFName1)))))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(btnSave)
+                        .addGap(75, 75, 75)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(39, 39, 39)
-                .addComponent(btnSave)
-                .addGap(75, 75, 75)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(208, 208, 208))
         );
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnNext, btnSave});
+
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -212,25 +207,32 @@ public class DcPregnancy extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblCitizen)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
-                    .addComponent(btnNext)
-                    .addComponent(jButton1))
-                .addGap(191, 191, 191))
+                    .addComponent(btnNext))
+                .addGap(151, 151, 151))
         );
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Data Collection - Pregnancy");
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel2.setText("Is there any pregnant woman in the house?");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -244,14 +246,18 @@ public class DcPregnancy extends javax.swing.JPanel {
                         .addGap(90, 90, 90)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
+                        .addGap(108, 108, 108)
                         .addComponent(jLabel2)
-                        .addGap(26, 26, 26)
+                        .addGap(46, 46, 46)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jButton1))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +270,9 @@ public class DcPregnancy extends javax.swing.JPanel {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
