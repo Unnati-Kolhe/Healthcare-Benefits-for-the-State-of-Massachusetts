@@ -167,7 +167,7 @@ public class SearchClient extends javax.swing.JPanel {
              if(rs.next()){
              }
         } catch(Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+            JOptionPane.showMessageDialog(this, "client found");
         }
  
   DCPersonDetails dc = new DCPersonDetails();

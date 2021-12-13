@@ -164,19 +164,14 @@ public class CustomerEligibility extends javax.swing.JPanel {
         lblclient.setText("Client ID:");
 
         lblStart.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblStart.setText("Eligibility Start Date :");
 
         lblStatus.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblStatus.setText("Status:");
 
         lblEnd.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblEnd.setText("Eligibility End Date:");
 
         lblBenefit.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblBenefit.setText("Benefit:");
 
         lblLeft.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblLeft.setText("Days Left:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

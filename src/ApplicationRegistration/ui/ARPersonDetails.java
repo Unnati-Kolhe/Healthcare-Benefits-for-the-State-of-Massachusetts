@@ -43,7 +43,6 @@ public class ARPersonDetails extends javax.swing.JPanel {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         lblFName = new javax.swing.JLabel();
@@ -78,23 +77,15 @@ public class ARPersonDetails extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setText("jLabel2");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 147, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(520, Short.MAX_VALUE))
+            .addGap(0, 642, Short.MAX_VALUE)
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -107,7 +98,6 @@ public class ARPersonDetails extends javax.swing.JPanel {
         lblFName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblFName.setText("First Name:");
 
-        txtFName.setText("ranu");
         txtFName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFNameActionPerformed(evt);
@@ -117,15 +107,12 @@ public class ARPersonDetails extends javax.swing.JPanel {
         lblMName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblMName.setText("Middle Name:");
 
-        txtMName.setText("mondal");
-
         lblLName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblLName.setText("Last Name:");
 
         lblDob.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblDob.setText("Date of Birth:");
 
-        txtLName.setText("mondal");
         txtLName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLNameActionPerformed(evt);
@@ -144,8 +131,6 @@ public class ARPersonDetails extends javax.swing.JPanel {
         lblGender.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblGender.setText("Gender:");
 
-        txtMarital.setText("unmarried");
-
         comboRace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hispanic/Latino", "American Indian", "African American", "Native Hawaiian", "White" }));
 
         comboEth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hispanic", "Native Americans", "Asian", "Latin", " " }));
@@ -155,7 +140,6 @@ public class ARPersonDetails extends javax.swing.JPanel {
         lblPhone.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblPhone.setText("Phone Number:");
 
-        txtPhone.setText("123-456-7890");
         txtPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPhoneActionPerformed(evt);
@@ -310,7 +294,7 @@ public class ARPersonDetails extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1006, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -426,7 +410,6 @@ public class ARPersonDetails extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> comboRace;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

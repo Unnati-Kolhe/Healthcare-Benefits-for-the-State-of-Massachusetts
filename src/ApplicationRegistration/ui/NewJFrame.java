@@ -58,7 +58,7 @@ DCPersonDetails pd;
         jSplitPane1.setDividerLocation(100);
         jSplitPane1.setDividerSize(0);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,9 +89,6 @@ DCPersonDetails pd;
         lbltype.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lbltype.setText("User Type:");
 
-        txtuser.setText("edadmin");
-
-        txtpass.setText("edadmin");
         txtpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpassActionPerformed(evt);

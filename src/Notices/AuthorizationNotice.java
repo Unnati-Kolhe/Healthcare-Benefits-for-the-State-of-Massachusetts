@@ -309,6 +309,8 @@ public class AuthorizationNotice extends javax.swing.JPanel {
         }catch(Exception ex) {
             System.out.println(""+ex);
         }
+    
+    JOptionPane.showMessageDialog(null, "Message sent!!");
     }//GEN-LAST:event_btnEmailActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed

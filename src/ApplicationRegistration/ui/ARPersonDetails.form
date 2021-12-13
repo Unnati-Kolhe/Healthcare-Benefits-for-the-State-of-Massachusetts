@@ -60,30 +60,15 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel2" pref="131" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="0" pref="147" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="116" max="-2" attributes="0"/>
-                      <EmptySpace pref="520" max="32767" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="0" pref="642" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel2"/>
-              </Properties>
-            </Component>
-          </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
@@ -101,7 +86,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" pref="1006" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
@@ -291,9 +276,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtFName">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="ranu"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFNameActionPerformed"/>
                   </Events>
@@ -307,9 +289,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtMName">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="mondal"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblLName">
                   <Properties>
@@ -328,9 +307,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtLName">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="mondal"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLNameActionPerformed"/>
                   </Events>
@@ -368,9 +344,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtMarital">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="unmarried"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="comboRace">
                   <Properties>
@@ -427,9 +400,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtPhone">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="123-456-7890"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhoneActionPerformed"/>
                   </Events>
